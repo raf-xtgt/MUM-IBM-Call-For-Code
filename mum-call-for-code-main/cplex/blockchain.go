@@ -25,7 +25,7 @@ func createGenesisBlock() Block {
 	var genesisBlock Block
 	genesisBlock.Data = genesisTransactionList
 	genesisBlock.Index = 0
-	genesisBlock.PrevHash = ""
+	genesisBlock.PrevHash = "Genesis"
 	genesisBlock.Hash = calculateHash(genesisBlock)
 	genesisBlock.TNBMoney = 0.0
 	genesisBlock.TNBEnergy = 0.0

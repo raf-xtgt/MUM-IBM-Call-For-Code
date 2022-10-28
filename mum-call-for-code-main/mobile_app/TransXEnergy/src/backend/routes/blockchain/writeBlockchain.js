@@ -12,10 +12,20 @@ const timestamp = admin.firestore.FieldValue.serverTimestamp()
 // get the data required to run the customer matching algorithm
 blockchainRoute.post("/WriteBlockchain", async(req, res) => {
 
-    let data = req.body
-    console.log("Data from frontend", data)
+    let data = req.body.data
+    // console.log("Data from frontend", data)
+    let newData = []
+    for (let i=0; i<data.length; i++){
+        let obj = data[i]
+        obj.Index = i
+        newData.push(obj)
+    }
+    console.log("New data", newData)
+    let blockchain = {
+        data:newData
+    }
     // let resDb = await db.collection("blockchain").add(data)
-    await db.collection("blockchain").doc("global").set(data);
+    await db.collection("blockchain").doc("global").set(blockchain);
 
     //res.json({Success:true})
     res.send({Success:true})
