@@ -1,0 +1,88 @@
+- after 30 mins of the DA is done, the transactions are stored in the database.
+- one validator mines and creates a block and that block is then stored in a temporary blockchain
+- the other validators who are not the current logged in one are notified.
+- they use the transactions and use the nonce to generate a similar hash if matches the block is made permanent
+
+
+
+to do now:
+- generate more blocks
+- find a specific folder to hold the blockchain
+- make a local copy of:
+    - AccountBalance
+    - blockchain
+    - latest index
+
+
+
+
+
+
+// the validators who did not produce the block will need to veirfy transactions and sign the block
+func verifyCentralBlockchain() bool {
+
+
+	currentChain := getCurrentBlockchain()
+	latestCentralBlock := getLatestBlock()
+	blockTransactions := latestCentralBlock.Data
+	latestBlockMetadata := getBlockMetadata(latestCentralBlock.Hash)
+
+	// we only check if the latest block was not checked by all validators
+	// this means validators array in latestBlockMetadata would be less than the TOTAL_VALIDATORS
+	if len(latestBlockMetadata.Validators) < TOTAL_VALIDATORS {
+		var counter = 0
+		for j := 0; j < len(blockTransactions); j++ {
+			transaction := blockTransactions[j]
+
+			// if the transaction is verified according to local copy
+			if localTrnVerification(transaction) {
+				// increment validator check in the central database
+				incrementChecks(transaction.TId)
+
+				// validator checks the block only when they finish verifying all the transactions
+				if counter == len(blockTransactions)-1 {
+					fmt.Println("All transactions in latest block are checked")
+					// use the nonce of the latest block and check whether its hash matches or not
+					if checkBlock(latestCentralBlock) {
+						// add the validator in the list of validators who checked the block in blockInfo collection.
+						updateCheckedValidators(latestCentralBlock.Hash)
+						return true
+					} else {
+						fmt.Println("Block hash doesn't match, then retry one more time and then discard if still no match")
+						// update the local copies of user account and blockchain file
+						createLocalCopies()
+						//now check again
+						if checkBlock(latestCentralBlock) {
+							// add the validator in the list of validators who checked the block in blockInfo collection.
+							updateCheckedValidators(latestCentralBlock.Hash)
+							return true
+						} else {
+							// second check fails
+							fmt.Println("Second check failed")
+							// discard the block
+							discardBlock(latestCentralBlock)
+							return false
+						}
+
+						//discardBlock(latestCentralBlock)
+					}
+
+				} else {
+					counter += 1
+				}
+
+			} else {
+				fmt.Println("Local transaction verification failed")
+			}
+
+		}
+	} else {
+		// no need to check since both validators have done so
+		fmt.Println("no need to check since both validators have done ")
+		setTrigger(false) // no new blocks to check so make it false
+		return true
+	}
+
+	return false
+
+}

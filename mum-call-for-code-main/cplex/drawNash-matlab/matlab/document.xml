@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[clc
+clear
+time = 48;
+nbCS = 2;
+nbPRO = 5;
+nbTotal = nbCS + nbPRO;
+listEV = [5, 5];
+addpath('nash profit maximization\');
+addpath('figureArchieve\');
+addpath('pngArchieve\');
+solar_import = importdata('Solar.csv');
+exchange_import = importdata('power exchange.csv');
+load_import = importdata('Power Consumption - BFM.csv');
+load_pro = load_import.data;
+solar = solar_import.data(:,1);
+for i = 1 : nbCS
+    ex = zeros(time, nbTotal-1);
+    for t = 1 : time
+        ac = 1;
+        for j = 1 : nbTotal
+            if(j ~= i)
+                ex(t, ac) = exchange_import(nbTotal*(t-1)+i, j);
+                ac = ac + 1;
+            end
+        end
+    end
+    sum(ex,2);
+    evQC = importdata(strcat('qCharge',num2str(i),'.csv'));
+    evQC = sum(evQC, 2);
+    evDC = importdata(strcat('qDisCharge',num2str(i),'.csv'));
+    evDC = sum(evDC, 2);
+    gridpower = importdata(strcat('grid powerCS',num2str(i),'.csv'));
+    gridbuy = gridpower(:,1);
+    gridsell = gridpower(:,2);
+    f = figure(i);
+    clf(i);
+    f.Position(3:4)=[1800 1000];
+%     gb = bar(gridbuy,'c', 'BarWidth',1,'DisplayName',"Grid buy");
+%     hold on
+%     gs = bar(gridsell,'m', 'BarWidth',1,'DisplayName','Grid sell');
+%     hold on
+%     ex = bar(ex,'stacked');
+%     hold on
+    ex = bar([gridbuy,gridsell,ex], "stacked", 'BarWidth',1);
+    hold on
+    ex(1).FaceColor = [0 1 1];
+	ex(2).FaceColor = [1 0 1];
+    dc = stem(evDC, 'r','filled','LineWidth',4,'DisplayName','EV discharge');
+    hold on
+    c = stem(evQC, 'b+','LineWidth',4,'DisplayName','EV charge');
+    hold on
+    pv = plot(solar,'*-','Color','G','LineWidth',4,'DisplayName','solar');
+    hold on
+    acc = 1;
+    for j = 1 : nbTotal
+        if i ~= j
+                temp = " ";
+            if j == 1
+                temp = "CS1";
+            elseif j == 2
+                temp = "CS2";
+            elseif j == 3
+                temp = "SH1";
+            elseif j == 4
+                temp = "SH2";
+            elseif j == 5
+                temp = "SH3";
+            elseif j == 6
+                temp = "SH4";
+            elseif j == 7
+                temp = "SH5";
+            end
+            name(acc) = strcat("CS",num2str(i),"-->",temp);
+            acc = acc + 1;
+        end
+    end
+    labels = ["Grid buy","Grid sell",name,"EV discharge","EV charge","Solar"];
+    handle = [ex, dc, c, pv];
+    legend(handle, labels,'FontSize',24,'Orientation','Horizontal','NumColumns',6);
+    title(strcat('Charging Station Profit Maximization Power Trading (CS',num2str(i),')'),'FontSize',24);
+    xlabel('Time in half hour','FontSize',24);
+    ylabel('kW','FontSize',24);
+    axis([0 48 -5 30])
+    savefig(strcat('figureArchieve\Nash CS',num2str(i),'.fig'))
+    saveas(gcf,strcat('pngArchieve\Nash CS',num2str(i),'.png'))
+end
+
+for i = 1 : nbPRO
+    ex = zeros(time, nbTotal-1);
+    for t = 1 : time
+        ac = 1;
+        for j = 1 : nbTotal
+            if(j ~= i+nbCS)
+                ex(t, ac) = exchange_import(nbTotal*(t-1)+i+nbCS, j);
+                ac = ac + 1;
+            end
+        end
+    end
+    load_pro;
+    gridpower = importdata(strcat('grid powerSH',num2str(i),'.csv'));
+    gridbuy = gridpower(:,1);
+    gridsell = gridpower(:,2);
+    f = figure(nbCS+i)
+    clf(nbCS+i)
+    f.Position(3:4)=[1900 1000];
+    gb = bar([gridbuy,-gridsell,-ex],"stacked", 'BarWidth',1);
+    gb(1).FaceColor = [0 1 1];
+	gb(2).FaceColor = [1 0 1];
+    hold on
+    ld = plot(load_pro(:,i)-solar,'o-','LineWidth',4,'Color','r');
+    hold on
+    pv = plot(solar,'*-','Color','G','LineWidth',4,'DisplayName','solar');
+    hold on
+    acc = 1;
+    for j = 1 : nbTotal
+        if i+nbCS ~= j
+                temp = " ";
+            if j == 1
+                temp = "CS1";
+            elseif j == 2
+                temp = "CS2";
+            elseif j == 3
+                temp = "SH1";
+            elseif j == 4
+                temp = "SH2";
+            elseif j == 5
+                temp = "SH3";
+            elseif j == 6
+                temp = "SH4";
+            elseif j == 7
+                temp = "SH5";
+            end
+            name(acc) = strcat("SH",num2str(i),"<--",temp);
+            acc = acc + 1;
+        end
+    end
+    handle = [gb,ld,pv];
+    labels = ["Grid buy","Grid sell",name,"Net load(load - solar)","Solar"];
+    legend(handle, labels,'FontSize',24,'Orientation','Horizontal','NumColumns',6);
+    title(strcat('Smart Home Profit Maximization Power Trading (SH',num2str(i),')'),'FontSize',24);
+    xlabel('Time in half hour','FontSize',24);
+    ylabel('kW','FontSize',24);
+    axis([0 48 -20 70])
+    savefig(strcat('figureArchieve\Nash SH',num2str(i),'.fig'))
+    saveas(gcf,strcat('pngArchieve\Nash SH',num2str(i),'.png'))
+
+end
+
+
+for i = 1 : nbCS
+    name = "";
+    acc = 1;
+    f = figure(11 + i);
+    clf(11 + i)
+    f.Position(3:4) = [650 300];
+    elevel_import = readmatrix(strcat("eLevel",num2str(i),'.csv'));
+    elevel = zeros(time, listEV(i));
+    for j = 1 :listEV(i)
+        for t = 1 : time - size(elevel_import,1)
+            elevel(t,j) = NaN;
+        end
+    end
+    elevel((time - size(elevel_import,1)+1):end,:) = elevel_import;
+    for j = 1 : listEV(i)
+        plot(elevel(:,j),'*-','LineWidth',6-j*1);
+        name(acc) = strcat('EV number ',num2str(j));
+        acc = acc+1;
+        hold on;
+    end
+    axis([0,48,0,30]);
+    title(strcat("EV energy level when trading with P2P ","(CS",num2str(i),")"))
+    h=legend(name,'Location','southeast');
+    xlabel('Time in half hour');
+    ylabel('kW');
+    savefig(strcat('figureArchieve\Nash elevel CS',num2str(i),'.fig'))
+    saveas(gcf,strcat('pngArchieve\Nash elevel CS',num2str(i),'.png'))
+end
+
+totalGridBuy = zeros(time,1);
+totalGridSell = zeros(time,1);
+for i = 1:nbCS
+    gridpower = importdata(strcat('grid powerCS',num2str(i),'.csv'));
+    totalGridBuy = totalGridBuy + gridpower(:,1);
+    totalGridSell = totalGridSell + gridpower(:,2);
+end
+for i = 1:nbPRO
+    gridpower = importdata(strcat('grid powerSH',num2str(i),'.csv'));
+    totalGridBuy = totalGridBuy + gridpower(:,1);
+    totalGridSell = totalGridSell + gridpower(:,2);
+end
+% figure(100 + i)
+% clf(100 + i)
+% bar(totalGridBuy)]]></w:t></w:r></w:p></w:body></w:document>

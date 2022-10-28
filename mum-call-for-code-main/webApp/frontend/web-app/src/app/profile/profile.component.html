@@ -1,0 +1,44 @@
+<div  style="width:100%; height:100%; background-color: #EBEDEC; ">
+    <div style="margin: auto 0; padding: 10px 10px; width:50%;">
+        <mat-card>
+            <mat-card-content>
+                
+                <div><b>Username:</b> {{username}} </div>
+                <div><b>Email:</b> {{email}} </div>
+                <div><b>Address:</b> {{address}} </div>
+                <div><b>Smart Meter No:</b> {{smartMetreNo}} </div>           
+            </mat-card-content>
+        </mat-card>
+    
+    </div>
+            
+    <!-- Show chart when loading is done -->
+    <div style="margin: auto 0;"> 
+        <h1>Income from energy trading</h1>
+        <canvas baseChart width="500" height="120"
+            [datasets]="chartData"
+            [labels]="xAxis"
+            [options]="barChartOptions"
+            [legend]="true"
+            [chartType]="'bar'"
+            [colors]="chartColors"
+            >
+        </canvas>
+    </div>
+
+    <div style="margin: auto 0; padding: 10px 10px; width:50%;">
+        <mat-card>
+            <mat-card-content>
+                
+                <div><b>Total Income: </b> RM {{ (totalIncome).toFixed(2) }} </div>
+                <div><b>Total Energy Traded: </b> {{ (totalEnSold).toFixed(2) }}kWH </div>
+                
+            </mat-card-content>
+        </mat-card>
+    
+    </div>
+    
+    
+    
+
+</div>

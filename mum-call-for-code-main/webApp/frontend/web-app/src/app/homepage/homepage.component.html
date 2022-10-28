@@ -1,0 +1,159 @@
+<div style="height: 100%; background-color: #EBEDEC;">
+
+    
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                
+                <!-- Welcome section -->
+                <div class="col-md-6">
+                    <div class="container">
+                        <div class="row">
+                            <div style="text-align: left; padding: 5pc;">
+                                <h1 style="font-size: 46px; font-weight:500; color:#2D323B">Solar Energy Trading </h1>
+                                <h3 style="font-size: 20px; color: #5B667C">Powered by Blockchain Technology</h3>
+                                <button mat-raised-button 
+                                style="background-color:#2793ff; color:beige; width:140px; 
+                                height:48px; border-radius: 12px; font-size: 16px;"
+                                (click)="redirectToMarket()">Start Trading</button>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image section -->
+                <div class="col-md-6 d-none d-md-flex">
+                    <img class="images" src="../../assets/LandingPage.png" style="height: 100%; width: 100%; display: inline-flex; opacity: 0.9;">
+                </div>
+                
+            </div>
+
+            <!-- Problem statement -->
+            <div class="row no-gutter" style=" background-color: #EBEDEC; padding:20px">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="margin:auto; text-align: center; ">
+                    <h2 style="color:rgb(55,52,50); font-size:40px; font-weight:500;">Why Energy Trading?</h2>
+                    <h3>
+                        <p>
+                            With a growing population, Malaysia's energy demands would only increase requiring urgent
+                            infrastructure upgrades and installations. Continuing to use current means of energy generation
+                            and transmission will have devastating impacts on the environment.
+                        </p>
+
+                        <p>
+                            Our platform provides an alternative to satisfy demands via peer to peer energy trading
+                            thus providing the users a second stream of income. 
+                        </p>
+
+                    </h3>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+           
+
+            <!-- Web Application Solution -->
+            <div class="row no-gutter" style=" background-color: #EBEDEC; padding:30px 0px 0px 0px;">
+                <div class="col-md-12" style="margin:auto; text-align: center;">
+                    <h2 style="color:rgb(55,52,50); font-size:40px; font-weight:500 ">Our Solution</h2>
+                </div>
+            </div>
+
+            <!-- Web Application Solution Diagrams -->
+            <div class="row no-gutter" style=" background-color: #EBEDEC;">
+                <div class="col-md-4" style="margin:auto; text-align: center;">
+                    <img class="images" src="../../assets/AI.png" style="height: 50%; width: 50%; display: inline-flex; opacity: 0.9;">
+                    <p style="font-size: 20px; font-weight:500">AI Driven</p>
+                    <p>
+                        Predicting energy capacity for trading
+                    </p>
+                </div>
+               
+                <div class="col-md-4" style="margin:auto; text-align: center;">
+                    <img class="images" src="../../assets/ReducedDemand.png" style="height: 50%; width: 50%; display: inline-flex; opacity: 0.9;">
+                    <p style="font-size: 20px; font-weight:500">Reduced Demand</p>
+                    <p>
+                        Demand satisfied by optimal energy allocation.
+                    </p>
+                </div>
+
+                <div class="col-md-4" style="margin:auto; text-align: center;">
+                    <img class="images" src="../../assets/Incentive.png" style="height: 50%; width: 50%; display: inline-flex; opacity: 0.9;">
+                    <p style="font-size: 20px; font-weight:500">Incentive</p>
+                    <p>
+                        Second income stream for traders.
+                    </p>
+                </div>
+                
+            </div>
+
+
+            <div class="row no-gutter" style=" background-color: #EBEDEC; text-align: center;">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-3"> 
+                    <img class="images" src="../../assets/Oversight.png" style="height: 80%; width: 80%; display: inline-flex; opacity: 0.9;">
+                    <p style="font-size: 20px; font-weight:500">Oversight</p>
+                    <p>
+                        <!-- Transparency as transactions are stored on blockchain. -->
+                        Transparency provided through blockchain
+                    </p>
+                </div>
+              
+                <div class="col-md-3">
+                    <img class="images" src="../../assets/Renewable.png" style="height: 80%; width: 80%; display: inline-flex; opacity: 0.9;">
+                    <p style="font-size: 20px; font-weight:500">Renewable
+                    
+                    </p>
+                    <p>
+                        Abundant solar energy available for trading.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+              
+
+            <!-- Energy prcing graph -->
+            <div class="row no-gutter" style=" background-color: #EBEDEC;">
+                <div class="col-md-12" style="padding: 50px;"> 
+                    <app-household-price-graph></app-household-price-graph>
+                </div>
+            </div>
+
+
+
+
+            <!-- Market requests -->
+            <div class="row no-gutter" style=" background-color: #EBEDEC; padding: 20px;">
+                <div class="col-md-12" style="margin-bottom: auto; margin-right:auto;"> 
+                    
+                    <app-new-market-page></app-new-market-page>
+                </div>
+            </div>
+
+            <div class="row no-gutter" style=" background-color: #EBEDEC;">
+                <div class="col-md-12" style="margin-bottom: auto; margin-right:auto;"> 
+                    
+                    <p></p>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    
+</div>
+
+
+<!-- About background images
+Most computer screens support a minimum resolution of 1024 x 768 pixels, 
+which means that your background photo should be that size – at the very least. 
+Best is to aim for at least 1200 pixels wide.
+Uploading an image that is only 500px wide will result in a blurry or pixelated background, 
+and nobody wants that.
+-->
+
+<!--                 <img class="images" src="../../assets/LandingPage.png" style="height: 100%; width: 100%; display: inline-flex; opacity: 0.9;">
+ -->

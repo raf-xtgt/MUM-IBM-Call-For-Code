@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[price_import=importdata("price.xlsx")
+price=price_import.data
+nbCS = 2;
+nbPro = 5;
+for i = 1:nbCS
+    figure(i)
+    clf(i)
+    f.Position(3:4) = [650 300]
+    pNFNP = price(i,1)
+    pNFP  = price(i,2)
+    pFNP  = price(i,4)
+    pFP   = price(i,5)
+    X = categorical({'Not flexible Not P2P','flexible Not P2P','Not flexible participate P2P','flexible participate P2P'});
+    X = reordercats(X,{'Not flexible Not P2P','flexible Not P2P','Not flexible participate P2P','flexible participate P2P'});
+    b = [pNFNP, pFNP, pNFP, pFP]
+    bar(X,b)
+    hold on
+    title(strcat("Profit of Charging Station (CS",num2str(i),")"))
+    ylabel("Malaysian ringgit")
+    saveas(gcf,strcat('pngArchieve\Cost comparison CS',num2str(i),'.png'))
+end]]></w:t></w:r></w:p></w:body></w:document>

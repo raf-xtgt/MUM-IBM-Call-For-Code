@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[clc
+clear
+time = 48;
+nbCS = 2;
+nbPRO = 5;
+nbTotal = nbCS + nbPRO;
+listEV = [5, 5];
+addpath('disagreement point\');
+addpath('figureArchieve\');
+solar_import = importdata('Solar.csv');
+load_import = importdata('Power Consumption - BFM.csv');
+load_pro = load_import.data;
+solar = solar_import.data(:,1);
+for i = 1 : nbCS
+    evQC = importdata(strcat('qCharge',num2str(i),'.csv'));
+    evQC = sum(evQC, 2);
+    evDC = importdata(strcat('qDisCharge',num2str(i),'.csv'));
+    evDC = sum(evDC, 2);
+    gridpower = importdata(strcat('grid powerCS',num2str(i),'.csv'));
+    gridbuy = gridpower(:,1);
+    gridsell = gridpower(:,2);
+    f = figure(i);
+    clf(i)
+    f.Position(3:4)=[1500 1000];
+    gb = bar(gridbuy,'c', 'BarWidth',1,'DisplayName',"Grid buy");
+    hold on
+    gs = bar(gridsell,'m', 'BarWidth',1,'DisplayName','Grid sell');
+    hold on
+    dc = stem(evDC, 'r','filled','LineWidth',4,'DisplayName','EV discharge');
+    hold on
+    c = stem(evQC, 'b+','LineWidth',4,'DisplayName','EV charge');
+    hold on
+    pv = plot(solar,'*-','Color','G','LineWidth',4,'DisplayName','solar');
+    hold on
+    acc = 1;
+    labels = ["Grid buy","Grid sell","EV discharge","EV charge","Solar"];
+    handle = [gb, gs, dc, c, pv];
+    legend(handle, labels,'Orientation','Horizontal','NumColumns',6,'FontSize',24);
+    title(strcat('Charging Station Power Charateristic w/o Interate with P2P (CS',num2str(i),')'),'FontSize',24);
+    xlabel('Time in half hour','FontSize',24);
+    ylabel('kW','FontSize',24);
+    axis([0 48 0 30])
+    savefig(strcat('figureArchieve\DP CS',num2str(i),'.fig'))
+    saveas(gcf,strcat('pngArchieve\DP CS',num2str(i),'.png'))
+end
+
+for i = 1 : nbPRO
+    load_pro;
+    gridpower = importdata(strcat('grid powerSH',num2str(i),'.csv'));
+    gridbuy = gridpower(:,1);
+    gridsell = gridpower(:,2);
+    f = figure(nbCS+i);
+    clf(nbCS+i)
+    f.Position(3:4)=[1500 1000];
+    gb = bar(gridbuy,'c', 'BarWidth',1,'DisplayName',"Grid buy");
+    hold on
+    gs = bar(-gridsell,'m', 'BarWidth',1,'DisplayName','Grid sell');
+    hold on
+    ld = plot(load_pro(:,i)-solar,'o-','LineWidth', 4, 'Color','r');
+    hold on
+    pv = plot(solar,'*-','Color','G','LineWidth',4,'DisplayName','solar');
+    hold on
+    handle = [gb, gs,ld,pv];
+    labels = ["Grid buy","Grid sell","Net load(load - solar)","Solar"];
+    legend(handle, labels,'Orientation','Horizontal','NumColumns',6,'FontSize',24);
+    title(strcat('Smart Home Power Charateristic w/o Interate with P2P (SH',num2str(i),')'),'FontSize',24);
+    xlabel('Time in half hour','FontSize',24);
+    ylabel('kW','FontSize',24);
+    axis([0 48 -20 70])
+    savefig(strcat('figureArchieve\DP SH',num2str(i),'.fig'))
+    saveas(gcf,strcat('pngArchieve\DP SH',num2str(i),'.png'))
+end
+
+for i = 1 : nbCS
+    f = figure(11 + i);
+    clf(11 + i)
+    f.Position(3:4) = [650 300];
+    elevel_import = readmatrix(strcat("eLevel",num2str(i),'.csv'));
+    elevel = zeros(time, listEV(i));
+    for j = 1 :listEV(i)
+        for t = 1 : time - size(elevel_import,1)
+            elevel(t,j) = NaN;
+        end
+    end
+    elevel((time - size(elevel_import,1)+1):end,:) = elevel_import;
+    name = "";
+    acc = 1;
+    for j = 1 : listEV(i)
+        plot(elevel(:,j),'*-','LineWidth',6-j*1);
+        name(acc) = strcat('EV number ',num2str(j));
+        acc = acc+1;
+        hold on;
+    end
+    axis([0,48,0,30]);
+    title(strcat("EV energy level w/o trading with P2P ","(CS",num2str(i),")"))
+    xlabel('Time in half hour');
+    ylabel('kW');
+    h=legend(name,'Location','southeast');
+    savefig(strcat('figureArchieve\DP elevel CS',num2str(i),'.fig'))
+    saveas(gcf,strcat('pngArchieve\DP elevel CS',num2str(i),'.png'))
+end
+
+
+]]></w:t></w:r></w:p></w:body></w:document>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><embeddedOutputs><metaData><evaluationState>manual</evaluationState><layoutState>code</layoutState><outputStatus>ready</outputStatus><splitterState><proportion>0.3423782920989625</proportion></splitterState></metaData><outputArray type="array"><element><type>variableString</type><outputData><name>f</name><value>  &lt;a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold"&gt;Figure&lt;/a&gt; (3) with properties:
+
+      Number: 3
+        Name: ''
+       Color: [1 1 1]
+    Position: [1000 558 1500 1000]
+       Units: 'pixels'
+
+  Show &lt;a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end"&gt;all properties&lt;/a&gt;
+</value><truncationInfo><wasTruncatedMidLine>false</wasTruncatedMidLine><wasTruncatedAtLineBreak>false</wasTruncatedAtLineBreak></truncationInfo><rows>1</rows><columns>1</columns></outputData><lineNumbers type="array"><element>103</element></lineNumbers></element><element><type>variableString</type><outputData><name>f</name><value>  &lt;a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold"&gt;Figure&lt;/a&gt; (4) with properties:
+
+      Number: 4
+        Name: ''
+       Color: [1 1 1]
+    Position: [1000 558 1500 1000]
+       Units: 'pixels'
+
+  Show &lt;a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end"&gt;all properties&lt;/a&gt;
+</value><truncationInfo><wasTruncatedMidLine>false</wasTruncatedMidLine><wasTruncatedAtLineBreak>false</wasTruncatedAtLineBreak></truncationInfo><rows>1</rows><columns>1</columns></outputData><lineNumbers type="array"><element>103</element></lineNumbers></element><element><type>variableString</type><outputData><name>f</name><value>  &lt;a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold"&gt;Figure&lt;/a&gt; (5) with properties:
+
+      Number: 5
+        Name: ''
+       Color: [1 1 1]
+    Position: [1000 558 1500 1000]
+       Units: 'pixels'
+
+  Show &lt;a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end"&gt;all properties&lt;/a&gt;
+</value><truncationInfo><wasTruncatedMidLine>false</wasTruncatedMidLine><wasTruncatedAtLineBreak>false</wasTruncatedAtLineBreak></truncationInfo><rows>1</rows><columns>1</columns></outputData><lineNumbers type="array"><element>103</element></lineNumbers></element><element><type>variableString</type><outputData><name>f</name><value>  &lt;a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold"&gt;Figure&lt;/a&gt; (6) with properties:
+
+      Number: 6
+        Name: ''
+       Color: [1 1 1]
+    Position: [1000 558 1500 1000]
+       Units: 'pixels'
+
+  Show &lt;a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end"&gt;all properties&lt;/a&gt;
+</value><truncationInfo><wasTruncatedMidLine>false</wasTruncatedMidLine><wasTruncatedAtLineBreak>false</wasTruncatedAtLineBreak></truncationInfo><rows>1</rows><columns>1</columns></outputData><lineNumbers type="array"><element>103</element></lineNumbers></element><element><type>variableString</type><outputData><name>f</name><value>  &lt;a href="matlab:helpPopup matlab.ui.Figure" style="font-weight:bold"&gt;Figure&lt;/a&gt; (7) with properties:
+
+      Number: 7
+        Name: ''
+       Color: [1 1 1]
+    Position: [1000 558 1500 1000]
+       Units: 'pixels'
+
+  Show &lt;a href="matlab:if exist('f', 'var'), matlab.graphics.internal.getForDisplay('f', f, 'matlab.ui.Figure'), else, matlab.graphics.internal.getForDisplay('f'), end"&gt;all properties&lt;/a&gt;
+</value><truncationInfo><wasTruncatedMidLine>false</wasTruncatedMidLine><wasTruncatedAtLineBreak>false</wasTruncatedAtLineBreak></truncationInfo><rows>1</rows><columns>1</columns></outputData><lineNumbers type="array"><element>103</element></lineNumbers></element></outputArray><regionArray type="array"><element><code><sectionBreak>true</sectionBreak><endOfSection>false</endOfSection><regionNumber>0</regionNumber></code><startLine>0</startLine><endLine>0</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>1</regionNumber></code><startLine>1</startLine><endLine>1</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>2</regionNumber></code><startLine>2</startLine><endLine>2</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>3</regionNumber></code><startLine>3</startLine><endLine>3</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>4</regionNumber></code><startLine>4</startLine><endLine>4</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>5</regionNumber></code><startLine>5</startLine><endLine>5</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>6</regionNumber></code><startLine>6</startLine><endLine>6</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>7</regionNumber></code><startLine>7</startLine><endLine>7</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>8</regionNumber></code><startLine>8</startLine><endLine>8</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>9</regionNumber></code><startLine>9</startLine><endLine>9</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>10</regionNumber></code><startLine>10</startLine><endLine>10</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>11</regionNumber></code><startLine>11</startLine><endLine>11</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>12</regionNumber></code><startLine>12</startLine><endLine>12</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>13</regionNumber></code><startLine>13</startLine><endLine>13</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>14</regionNumber></code><startLine>14</startLine><endLine>14</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>15</regionNumber></code><startLine>15</startLine><endLine>85</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>16</regionNumber></code><startLine>87</startLine><endLine>146</endLine><outputIndexes type="array"><element>0</element><element>1</element><element>2</element><element>3</element><element>4</element></outputIndexes></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>17</regionNumber></code><startLine>149</startLine><endLine>176</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>18</regionNumber></code><startLine>178</startLine><endLine>178</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>19</regionNumber></code><startLine>179</startLine><endLine>179</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>false</endOfSection><regionNumber>20</regionNumber></code><startLine>180</startLine><endLine>184</endLine><outputIndexes type="array"/></element><element><code><sectionBreak>false</sectionBreak><endOfSection>true</endOfSection><regionNumber>21</regionNumber></code><startLine>185</startLine><endLine>189</endLine><outputIndexes type="array"/></element></regionArray></embeddedOutputs>

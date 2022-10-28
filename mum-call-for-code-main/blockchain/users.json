@@ -1,0 +1,366 @@
+[
+ {
+  "Userid": 99,
+  "Username": "Admin",
+  "Pubkey": "MIIBCgKCAQEAqgWf86ve9gpGhHfi/ERrRcyieDq6keJUZiyCzMKgLZeRIutsSQtevBHm6ecvz22OYS59xFsIfBwvM6j8ldOBWBpe+GbyQ0zQhWVsNteKFE9VlVkC25MMzlDitbdYWBeS3lDI/JdF2ieomnnztTmGaJNdNW4SurluHw7ABkJS8RcxFLWKGbgqnyhAG85zBR0tMQ/48NuUPOdbbB/bpCQPAbKp9q/UkzRzg8TJL/2bOK/QXLWK3Emh10UXrrQur+5KRQ5gZodE6q9YbnvwE5d5wYV5vhJX3VzkVRvyQQsdVVK2tA2u5o60jr+YSWGZCv5VjkeYHNzf6Wl2mb3ZjI28awIDAQAB",
+  "Privkey": "MIIEpAIBAAKCAQEAqgWf86ve9gpGhHfi/ERrRcyieDq6keJUZiyCzMKgLZeRIutsSQtevBHm6ecvz22OYS59xFsIfBwvM6j8ldOBWBpe+GbyQ0zQhWVsNteKFE9VlVkC25MMzlDitbdYWBeS3lDI/JdF2ieomnnztTmGaJNdNW4SurluHw7ABkJS8RcxFLWKGbgqnyhAG85zBR0tMQ/48NuUPOdbbB/bpCQPAbKp9q/UkzRzg8TJL/2bOK/QXLWK3Emh10UXrrQur+5KRQ5gZodE6q9YbnvwE5d5wYV5vhJX3VzkVRvyQQsdVVK2tA2u5o60jr+YSWGZCv5VjkeYHNzf6Wl2mb3ZjI28awIDAQABAoIBAAaqK8f4f8fzRSpiLLKo1++nguLlonSfg6FxszrlkjPXUiglRFxkprUGmp+moVgnOkKS+PkefGmpDSygPi59WP+kIP7pwitjMnVYMXLA5je/mGI/V/5VeFYKE6j94+eoHOi8D/Te1S0lCtXrW+NJuvwUcr3qb6+EH032XQ6hwPCUYMj/KDFdUzLSEgiY1HNCCW8p/Y+WWEl7Mj/CzvrmoAzYCVl0fjvJJqVFHd1Kwy4TrdKpPX0AJp4G21QY1a0HSAku97bd1RnI7lWdiPWmj01OCCTE9rq7tw5DPlO/ey1Ghm4/bJ3cUgoLJhdeZ8voEPxZMfT1adfx7MMz9UTigwkCgYEA2JT5Ww4790HhIAX1r8Tp8n+p9uQ7msOJboshb06R1jIWmzan8OSwMdMfnNzN/rZLW+8XgeiULoVzqmLnauxgitERrshkwIOww0vwXcpqiufW2bVwdksQ12GBjQg1yqVabjRUiBbCf5UocmvKjpBnEhrbnvItMUHKsjQbXGaeXW0CgYEAyPdSCblSfbBCW091NT3CjmDwWWJuwpWehnF66VLrg01b3SzdK7NcdBIgU6VVoWh/XsUz/ipz0cUQxMsJRlGPCXJK7dKYgXNykBkXbBn9TiD/fvhHcv2TUjXXH3fUu4sHjxLSE9mR0nwc3UTgkOAMQ09Un/cH5FSJEpv4vQoOEjcCgYA//iR/RwFo2UpPT/N7787AHAB4No919viQdQN4A9sLUtljGw8cGjYFQsBAdO1YqTwy+b4UYEgIRt4aJgcCjL0pxwRWhFdgmoiL69Alpj08tavBv95u1VcwjFre9OIP8jN6BHRFkZP+ZnAA/uBmpzwNGWpy2FOKDkp5xPOgpaF9MQKBgQCW3pUIF8iF8zzdr9keDy9wE/ZcJDlie1B3Pdo4L7f+6qR8dqHTnONbgAAky4ptkjWMwB84QEaSxI7CLmrYD4KCZPs7b05uYG0xIKUk0p4HeV5Vw65f9V4T6beGOD/MS6NxFYAAxuViTyqcMokkOg76uSOes6WJFK2S+uTRhirqIQKBgQCVxbkmnlSyT5qvO7thSNxQvgovGW6hJ+dm21tjjTYesG3TLNpU4raBCaVzSRcuy5lIOjAkDLRVf0GtQeF3kM3XTq+vWUaNUB6R7shrs3WEygUBofxACAU2kPTOHGh9TvMcgzSuMHfrd5b8VQrm+x3lZJkBjP9ba18ql0hPXrqHdg==",
+  "Role": 1,
+  "Blockchain": null,
+  "BlockchainHash": ""
+ },
+ {
+  "Userid": 1,
+  "Username": "Validator",
+  "Pubkey": "MIIBCgKCAQEAxsUC3tEXaThGs4mJUxhT5cLkrFoPkCIqAY2dPFWsipIlD9tJH4NqzS7F2J3iOixODYYd1plNJZbWbMVEW4sfIL1jGR+l/fwfqNVUxs6I5lmn8FKLHgO3Cxk+6n3U41YV5DPUMSyAvzG56VBGYlGJ5sBHTdNfsJdDBR07gQVx/c50vF7g1sK1wqZYWuWX7tm8g4pTnvDefv8nCs3ksZWMgJ8QRsb1QCAIJicKjKHCek9eP67KnfwWmkW1AZt2+ubxjYcqtynLcGOMjeqp292H/KxFeLPkNWfJea5zeufJApzWdRNsT6Drik6kMsSFNsvmzhgLGf/eQfBRcptxLuSAkwIDAQAB",
+  "Privkey": "MIIEowIBAAKCAQEAxsUC3tEXaThGs4mJUxhT5cLkrFoPkCIqAY2dPFWsipIlD9tJH4NqzS7F2J3iOixODYYd1plNJZbWbMVEW4sfIL1jGR+l/fwfqNVUxs6I5lmn8FKLHgO3Cxk+6n3U41YV5DPUMSyAvzG56VBGYlGJ5sBHTdNfsJdDBR07gQVx/c50vF7g1sK1wqZYWuWX7tm8g4pTnvDefv8nCs3ksZWMgJ8QRsb1QCAIJicKjKHCek9eP67KnfwWmkW1AZt2+ubxjYcqtynLcGOMjeqp292H/KxFeLPkNWfJea5zeufJApzWdRNsT6Drik6kMsSFNsvmzhgLGf/eQfBRcptxLuSAkwIDAQABAoIBAEc81IqG5Z0QTkaKRG1Dis4Ny2b54BoIJIXp+zBkhDIlrqLANLTWpLBk0wOPkkTHHDI8nvUKfFu8c50IFje45K8XMS0P6q3cbnxT+M5Ht0jXWRkIfFOFgVS495OTBXl0oOPor2PwTzQ23iqAWrlh/8pznxqFZwYjMCHlGC5lhTUw5wWz0USemvV6aRS2OyuSIvG6vTuOrYXIf1Gbr+a6JkqC+D//aX+JzJywDwdw3PANK/uM6b5H4csE3wDjJXFUw9h1UxiglklHRBf9fe8DtWQ0E1+ABKIboJBRWjeocGQHAkLclGTd7kzmd6OkfVab2h5M8c6JagOKMlyMGid8KAECgYEA0a8+u0xqfbtp+qvuJlCun2HaMB3llihjgcUgI9SrkvEhg7sDtpdXS/mWFDahFB3RUgESAazvMaCnBfdIddwsSkYe3VcgTxyP1fehLJYM6woV9dtjnYDbk21udIx2OTyYVNGgntO6xs4A2EcwNPjwDGY4zQMAy6DteFTM2KvH5IMCgYEA8qySS0pYkn2WBDuHqcA0BhIEuke3IQ15aP+hLloDpGis88ArbLV6ei9kik8HQpSI5y3y39azQj2O4TN0xDXPsqT0CN0IRtuG1lVl2Y+8r1isuW2rQth38//Y/iK7EK8XntPwzipvWfrbWWmHZetGC/7QayGC/Y+zcA/fcDCO1rECgYEAgNPDnf2oG9GunkVNzxqY/vF2xUNJEEWGRW+gfIMoWuJtberTsDYxe0s/6vFZa+uZ9GEV+BOQ7hO/KoowacE5MPT9942VGyX4NUSsMKGMFEghD+mXvWgy/9QnHdJCvI2/JbWZkpuRUJ22pSqvsowTp/qSAVtL/M/Ftr2bEbAQ4xMCgYB/XvCSL/15Ng1tP0mfYVBs9zwgAdAuuwHEiJey2nAa9Q4CChVAw6f7RbDBn2UyHwAURtu5fNktpV2++eEJsyzGmSm1FT5o4oRNLxl8LaNdbW+LC/Ld7PxYxyq/iL8irKP7K0azDzbOxYonzenRJsHnPeFquXYlXC1UXiBqpDH0oQKBgExgRSxSQ5iIBChC28Eh9dfRJVReaBY6aYWaTL2PjFDMJCQQkGiEebD8DlHUOiQ6c1MvvgbdR5XPv0+PywoN05ao/n469SDrYsHcJ+4XS6MR/0bEClF7vjsD7g0iFBm5K+SJCcUg9sYKSbZZq0RoMBjuLcLJUb+uMG9lojUdnmva",
+  "Role": 2,
+  "Blockchain": null,
+  "BlockchainHash": ""
+ },
+ {
+  "Userid": 2,
+  "Username": "Validator",
+  "Pubkey": "MIIBCgKCAQEAqbnQunVyRWZD7BN5GFYP9+a6ZLilLjkbVTI8pobHwTtsnF7DODjZxix97gUKOOm86JWGer6irnb0wok9UgFP50qjAu655rATgVq2kjc3CeJhLuiMtVLUf8upRjaSGaS+liN7rRWew3RFc75FXIm4lQHEdvRsLvPYJLxyrkmkHpGAlVwQLZG4+3lyoOA652sTUW4/dMpzFpX1oJMNEVzV8VR9Thk2UDVdwC5M6kZUbVvcM7x9l31CKH4G1fQKg7vvTK3ObUPD3J2Zw5ZJdJTw9hYkjXX8hMxdGpr4ObhIC233h4IAnSBsBbFzEdqWHrqAYHmgKY2nEBuuBtgSR9c/3wIDAQAB",
+  "Privkey": "MIIEpQIBAAKCAQEAqbnQunVyRWZD7BN5GFYP9+a6ZLilLjkbVTI8pobHwTtsnF7DODjZxix97gUKOOm86JWGer6irnb0wok9UgFP50qjAu655rATgVq2kjc3CeJhLuiMtVLUf8upRjaSGaS+liN7rRWew3RFc75FXIm4lQHEdvRsLvPYJLxyrkmkHpGAlVwQLZG4+3lyoOA652sTUW4/dMpzFpX1oJMNEVzV8VR9Thk2UDVdwC5M6kZUbVvcM7x9l31CKH4G1fQKg7vvTK3ObUPD3J2Zw5ZJdJTw9hYkjXX8hMxdGpr4ObhIC233h4IAnSBsBbFzEdqWHrqAYHmgKY2nEBuuBtgSR9c/3wIDAQABAoIBABVYSwnID3Du5YfhAw+ucx+oIrTcC9n+UJOsV7hRpvmEMaqQuFhvveOQYN34QErcCmftthXlt6vdRfbZL58KjzP1TP7navW6GxnfgKpuyzsw/yvZDykWm6bexBESd9lFwLo9CCbCW08VZk6iFTMIFvCWYlDbeGeHPx2PnZSRqlQ1n64m+ayPbx914hAbJa29PsgHV8jvBxFfXKxh3qfjbj6+v2VTD/STlFWAx89G5AA822tXoWAL0aRF72uGgJna3Be223qNL61gNRVdM+9XRamA6udI0M3xhIvgwcHEIkn5/MFvNwC/u3VUUMI1AJ1TSNERxu1uAnBlV4BXFooxWiECgYEA4gb5t+4oD9BNr+M+zmWFGIq6wE5GmvHk36YSuaWl/MEimlP9ablqEcuAgknyq93aKKeGrpgurFr2h9Oc9zjv733VAIdpOjvPsclBC+GIy1pOGIQOme8YePCAzx29Hnj21OrYZ1lYpGd/wN/i0JH0K9S+i3DbNAxpXyY8SKH5fXcCgYEAwDuOhJ3NT/9YMSE8HIfFaX+BvmGBLE39Hs7AVxfpGZokZutfKRkjWxRjVHh8TtKx2wzkWIr6yzlSdFdS6MpZA+PgWJHoYin4gb2B/UMvRrHg4fmCd47cAZD+9obVFKJML9yV9HWUFroX6cbw6bGtej3/yWS+Ic9V4CAztTuEytkCgYEAktWzPqDx16wb++ql75GWEGZ3gdyYE6qXZA9QVNhe579USmvL0fYJCTxp5LpDcxFx2z1RynTExWVmiMCZVSXhAXV+fZR6cMFQYQ/8OMqwgmLNHzITBj+EZ3TeSS7poDU3LQTPxvwNEOjH3rXTdGmM9TiE/LM5RCvX/F8rhIftO2sCgYEAjUh4c6GjL2OFRv6dNn7XKbWL/wecr5pWKdlc5eXt7WIr1PSyyPrv0FYItyGigzA5hbxQ636h2tEzd8xiZDOr/r7xuUbrm5IrUfedXS2Oxo+fr5X5PLPjoMcXjMsGOpcaFaczEyuDfryhLLGJiMiMrqZ4o2UGlMTU4dfpCQ9IhukCgYEAuCktcJx9KXaSfm9JWIqHTYlVCeJD2Hm9Xk44A16eacXSYCmO5KJ/wSmVJ38CDxplV39mEp1hWKEGH+f4IzDGwL8x6jTYFoMSyPuwTHOr46Cm3Tm9mAzD6LjrLoswGxuZTJX38X0PDW8QWDZcJ+74y+z49/Zb4xGfNpLvLzjIZWM=",
+  "Role": 2,
+  "Blockchain": null,
+  "BlockchainHash": ""
+ },
+ {
+  "Userid": 3,
+  "Username": "Validator",
+  "Pubkey": "MIIBCgKCAQEAo79BwhJMw5GdEbmH5EkL/vYuzGiWgSVzH49xUMt6MdrqkArmeo9E1LKyotwuqVi/dB0pcmyQMexJIaVoBIicIr4k0XCCTZ0K/l8HpUYZoi2bOtKUYHLVbYn+NRWpkR1l0LPaPfpP5TPoWwZ+FjjO/Yp2R53Aarr7hG25Zk364yOAdTl2I9FhxW+p2cOB0mr+KMIfIssZ3oOEUtBWtBhvhznoYKY6yJmShi96E3TcbgETtrSQ3xCPTsUiQxz2NBNkZQL/rfyV7X9kLz5T4N6BEd7PUWy4occefb7JTyqSHQvkyraMBY79wB7k2HdBSu2lJUeEzO4u6mrkpcbcH2VJOwIDAQAB",
+  "Privkey": "MIIEowIBAAKCAQEAo79BwhJMw5GdEbmH5EkL/vYuzGiWgSVzH49xUMt6MdrqkArmeo9E1LKyotwuqVi/dB0pcmyQMexJIaVoBIicIr4k0XCCTZ0K/l8HpUYZoi2bOtKUYHLVbYn+NRWpkR1l0LPaPfpP5TPoWwZ+FjjO/Yp2R53Aarr7hG25Zk364yOAdTl2I9FhxW+p2cOB0mr+KMIfIssZ3oOEUtBWtBhvhznoYKY6yJmShi96E3TcbgETtrSQ3xCPTsUiQxz2NBNkZQL/rfyV7X9kLz5T4N6BEd7PUWy4occefb7JTyqSHQvkyraMBY79wB7k2HdBSu2lJUeEzO4u6mrkpcbcH2VJOwIDAQABAoIBADZuSBST8rJ7v+N5ccOfyH4LJYlLJuRtJ3SRQRCjYs4ZwCj7hpus7itp71mVqWkfmByn6PQhRFlj+vdVPVtsccJWxHReWuIj1tixjCATSkgPsu79utbItUuBOGA7AC+9vu9+KYi6oT5GX/GKGfWXEq9TDHhH5wNTfnIJ6zwnpcNErLusxTeRwBkK/oSAlt12I3kerXHEn4IJRji2HSUU30Vixgk2bJi2AKb8GBeuIZcYjnweDZQZCuzx+spZvgui1YgzXoesP8a+6OZm+3urXB4m7XRNxaPbXbX7zw05APcswBKQl4BkX8j0CoVwcnbe5k191cSdZSFD9RHLQRlt8OECgYEAzMorLzbsuqZLHOyYyuWs+qKiZke90tXNd5rLaHsBn42QglDhGFd4COdBUijrJ4f5QiuyngkXpCQTyfsXnlJyy58+TaZpYI+jI7L/pjKxiq7rZLyfMkL9io0aoSsX58nsMpRDpowAf+OxqEbgl0/TaO5zZ0Lbv/ThRH2Xex2ANjECgYEAzLGzdwrk9lbFmx21txm2zJ6Hho4mtC7ntQ4Uxdr2Nd3tqA541hG6SYendbM16th9zjijGK9HssvflsU2Qkc3ySngxbBZMwE0rxJ/Q7BH7BYh96zd3BaBdD4ua8rPYzFLoYi2EMQ2pjj7MoQKLfFzUa3U10YK2FwT3OPfG5LAXysCgYAlicVisTGxgPvxwFi9kF4lzxvvnaTo+bHhA6nXa/y/L2bWzFaGbLoe/6zUj5WTOHRzMalbGJWRy98ovfL1XW2Xb4gvGZrlTU79IzmDUHWE001ouL6Bqw/ojrbb5hdKsJOwLcc8xxrsVmNhUiSm98XrzRGwUuwPAqcsM81Jjv3KcQKBgQCVzft0xNFag5is9CpYLYZ97Attaz1iIu3KsNp9DsmgFKJomubObDz0sUXaOuTb0cMImKSsXSNQ9CnXcs9J5EsseuyYYX52eIxxEE15YVrRqkUDuUzJVOM7CoL4un3ar2oVdzMfxCnmrs8QYlf81bc68MhTIFyxiXmz8EUJLfaB7wKBgBKFG/SSuZzeQ19SvNM06VNQ/B6OyTHDw4otX4F4sgkB80tW/lV9mYWAxnIRBRE9eGFjP8Hm4shCe61PeS79nMPo2bv85xKEqFnWXOOvaihK/sO5Fe/RYgYjadXCkSLTIfUzipnPUt9v2zAYVMcBwKBQQF2aMZDgTh3DwxKJ8h7X",
+  "Role": 2,
+  "Blockchain": null,
+  "BlockchainHash": ""
+ },
+ {
+  "Userid": 4,
+  "Username": "Clerk",
+  "Pubkey": null,
+  "Privkey": null,
+  "Role": 3,
+  "Blockchain": [
+   {
+    "Index": 0,
+    "Data": [
+     {
+      "Timestamp": "0",
+      "Buyer": 0,
+      "Seller": 0,
+      "Money": 0,
+      "Energy": 0
+     }
+    ],
+    "Hash": "f1534392279bddbf9d43dde8701cb5be14b82f76ec6607bf8d6ad557f60f304e",
+    "PrevHash": "",
+    "Difficulty": 0,
+    "Nonce": "",
+    "LeaderID": 0
+   },
+   {
+    "Index": 1,
+    "Data": [
+     {
+      "Timestamp": "2022-03-17 15:18:41.4911963 +0800 +08 m=+37.061371501",
+      "Buyer": 99,
+      "Seller": 4,
+      "Money": 100,
+      "Energy": 0
+     },
+     {
+      "Timestamp": "2022-03-17 15:18:41.8348579 +0800 +08 m=+37.405033101",
+      "Buyer": 99,
+      "Seller": 5,
+      "Money": 100,
+      "Energy": 0
+     },
+     {
+      "Timestamp": "2022-03-17 15:18:42.1226697 +0800 +08 m=+37.692844901",
+      "Buyer": 99,
+      "Seller": 6,
+      "Money": 100,
+      "Energy": 0
+     },
+     {
+      "Timestamp": "2022-03-17 15:18:42.7940477 +0800 +08 m=+38.364222901",
+      "Buyer": 99,
+      "Seller": 7,
+      "Money": 100,
+      "Energy": 0
+     }
+    ],
+    "Hash": "21ff6e956696229a906d6d5607cb1a2e2e14b9c78abce85a98b1310a5e1eb2cc",
+    "PrevHash": "f1534392279bddbf9d43dde8701cb5be14b82f76ec6607bf8d6ad557f60f304e",
+    "Difficulty": 0,
+    "Nonce": "0",
+    "LeaderID": 1
+   },
+   {
+    "Index": 2,
+    "Data": [
+     {
+      "Timestamp": "2022-03-17 15:19:06.6040936 +0800 +08 m=+62.174268801",
+      "Buyer": 4,
+      "Seller": 5,
+      "Money": 10,
+      "Energy": 1
+     }
+    ],
+    "Hash": "babec0132a1319be85c3a1e0d2abeb9dddbab592bf445a4442919d1a5628bcff",
+    "PrevHash": "21ff6e956696229a906d6d5607cb1a2e2e14b9c78abce85a98b1310a5e1eb2cc",
+    "Difficulty": 0,
+    "Nonce": "0",
+    "LeaderID": 2
+   }
+  ],
+  "BlockchainHash": "fec900fdaa77964be684bc91cdbe118ba09a6cbc470c1c0415ea649eee92c7d6"
+ },
+ {
+  "Userid": 5,
+  "Username": "Clerk",
+  "Pubkey": null,
+  "Privkey": null,
+  "Role": 3,
+  "Blockchain": [
+   {
+    "Index": 0,
+    "Data": [
+     {
+      "Timestamp": "0",
+      "Buyer": 0,
+      "Seller": 0,
+      "Money": 0,
+      "Energy": 0
+     }
+    ],
+    "Hash": "f1534392279bddbf9d43dde8701cb5be14b82f76ec6607bf8d6ad557f60f304e",
+    "PrevHash": "",
+    "Difficulty": 0,
+    "Nonce": "",
+    "LeaderID": 0
+   },
+   {
+    "Index": 1,
+    "Data": [
+     {
+      "Timestamp": "2022-03-17 15:18:41.4911963 +0800 +08 m=+37.061371501",
+      "Buyer": 99,
+      "Seller": 4,
+      "Money": 100,
+      "Energy": 0
+     },
+     {
+      "Timestamp": "2022-03-17 15:18:41.8348579 +0800 +08 m=+37.405033101",
+      "Buyer": 99,
+      "Seller": 5,
+      "Money": 100,
+      "Energy": 0
+     },
+     {
+      "Timestamp": "2022-03-17 15:18:42.1226697 +0800 +08 m=+37.692844901",
+      "Buyer": 99,
+      "Seller": 6,
+      "Money": 100,
+      "Energy": 0
+     },
+     {
+      "Timestamp": "2022-03-17 15:18:42.7940477 +0800 +08 m=+38.364222901",
+      "Buyer": 99,
+      "Seller": 7,
+      "Money": 100,
+      "Energy": 0
+     }
+    ],
+    "Hash": "21ff6e956696229a906d6d5607cb1a2e2e14b9c78abce85a98b1310a5e1eb2cc",
+    "PrevHash": "f1534392279bddbf9d43dde8701cb5be14b82f76ec6607bf8d6ad557f60f304e",
+    "Difficulty": 0,
+    "Nonce": "0",
+    "LeaderID": 1
+   },
+   {
+    "Index": 2,
+    "Data": [
+     {
+      "Timestamp": "2022-03-17 15:19:06.6040936 +0800 +08 m=+62.174268801",
+      "Buyer": 4,
+      "Seller": 5,
+      "Money": 10,
+      "Energy": 1
+     }
+    ],
+    "Hash": "babec0132a1319be85c3a1e0d2abeb9dddbab592bf445a4442919d1a5628bcff",
+    "PrevHash": "21ff6e956696229a906d6d5607cb1a2e2e14b9c78abce85a98b1310a5e1eb2cc",
+    "Difficulty": 0,
+    "Nonce": "0",
+    "LeaderID": 2
+   }
+  ],
+  "BlockchainHash": "fec900fdaa77964be684bc91cdbe118ba09a6cbc470c1c0415ea649eee92c7d6"
+ },
+ {
+  "Userid": 6,
+  "Username": "Clerk",
+  "Pubkey": null,
+  "Privkey": null,
+  "Role": 3,
+  "Blockchain": [
+   {
+    "Index": 0,
+    "Data": [
+     {
+      "Timestamp": "0",
+      "Buyer": 0,
+      "Seller": 0,
+      "Money": 0,
+      "Energy": 0
+     }
+    ],
+    "Hash": "f1534392279bddbf9d43dde8701cb5be14b82f76ec6607bf8d6ad557f60f304e",
+    "PrevHash": "",
+    "Difficulty": 0,
+    "Nonce": "",
+    "LeaderID": 0
+   },
+   {
+    "Index": 1,
+    "Data": [
+     {
+      "Timestamp": "2022-03-17 15:18:41.4911963 +0800 +08 m=+37.061371501",
+      "Buyer": 99,
+      "Seller": 4,
+      "Money": 100,
+      "Energy": 0
+     },
+     {
+      "Timestamp": "2022-03-17 15:18:41.8348579 +0800 +08 m=+37.405033101",
+      "Buyer": 99,
+      "Seller": 5,
+      "Money": 100,
+      "Energy": 0
+     },
+     {
+      "Timestamp": "2022-03-17 15:18:42.1226697 +0800 +08 m=+37.692844901",
+      "Buyer": 99,
+      "Seller": 6,
+      "Money": 100,
+      "Energy": 0
+     },
+     {
+      "Timestamp": "2022-03-17 15:18:42.7940477 +0800 +08 m=+38.364222901",
+      "Buyer": 99,
+      "Seller": 7,
+      "Money": 100,
+      "Energy": 0
+     }
+    ],
+    "Hash": "21ff6e956696229a906d6d5607cb1a2e2e14b9c78abce85a98b1310a5e1eb2cc",
+    "PrevHash": "f1534392279bddbf9d43dde8701cb5be14b82f76ec6607bf8d6ad557f60f304e",
+    "Difficulty": 0,
+    "Nonce": "0",
+    "LeaderID": 1
+   },
+   {
+    "Index": 2,
+    "Data": [
+     {
+      "Timestamp": "2022-03-17 15:19:06.6040936 +0800 +08 m=+62.174268801",
+      "Buyer": 4,
+      "Seller": 5,
+      "Money": 10,
+      "Energy": 1
+     }
+    ],
+    "Hash": "babec0132a1319be85c3a1e0d2abeb9dddbab592bf445a4442919d1a5628bcff",
+    "PrevHash": "21ff6e956696229a906d6d5607cb1a2e2e14b9c78abce85a98b1310a5e1eb2cc",
+    "Difficulty": 0,
+    "Nonce": "0",
+    "LeaderID": 2
+   }
+  ],
+  "BlockchainHash": "fec900fdaa77964be684bc91cdbe118ba09a6cbc470c1c0415ea649eee92c7d6"
+ },
+ {
+  "Userid": 7,
+  "Username": "Clerk",
+  "Pubkey": null,
+  "Privkey": null,
+  "Role": 3,
+  "Blockchain": [
+   {
+    "Index": 0,
+    "Data": [
+     {
+      "Timestamp": "0",
+      "Buyer": 0,
+      "Seller": 0,
+      "Money": 0,
+      "Energy": 0
+     }
+    ],
+    "Hash": "f1534392279bddbf9d43dde8701cb5be14b82f76ec6607bf8d6ad557f60f304e",
+    "PrevHash": "",
+    "Difficulty": 0,
+    "Nonce": "",
+    "LeaderID": 0
+   },
+   {
+    "Index": 1,
+    "Data": [
+     {
+      "Timestamp": "2022-03-17 15:18:41.4911963 +0800 +08 m=+37.061371501",
+      "Buyer": 99,
+      "Seller": 4,
+      "Money": 100,
+      "Energy": 0
+     },
+     {
+      "Timestamp": "2022-03-17 15:18:41.8348579 +0800 +08 m=+37.405033101",
+      "Buyer": 99,
+      "Seller": 5,
+      "Money": 100,
+      "Energy": 0
+     },
+     {
+      "Timestamp": "2022-03-17 15:18:42.1226697 +0800 +08 m=+37.692844901",
+      "Buyer": 99,
+      "Seller": 6,
+      "Money": 100,
+      "Energy": 0
+     },
+     {
+      "Timestamp": "2022-03-17 15:18:42.7940477 +0800 +08 m=+38.364222901",
+      "Buyer": 99,
+      "Seller": 7,
+      "Money": 100,
+      "Energy": 0
+     }
+    ],
+    "Hash": "21ff6e956696229a906d6d5607cb1a2e2e14b9c78abce85a98b1310a5e1eb2cc",
+    "PrevHash": "f1534392279bddbf9d43dde8701cb5be14b82f76ec6607bf8d6ad557f60f304e",
+    "Difficulty": 0,
+    "Nonce": "0",
+    "LeaderID": 1
+   },
+   {
+    "Index": 2,
+    "Data": [
+     {
+      "Timestamp": "2022-03-17 15:19:06.6040936 +0800 +08 m=+62.174268801",
+      "Buyer": 4,
+      "Seller": 5,
+      "Money": 10,
+      "Energy": 1
+     }
+    ],
+    "Hash": "babec0132a1319be85c3a1e0d2abeb9dddbab592bf445a4442919d1a5628bcff",
+    "PrevHash": "21ff6e956696229a906d6d5607cb1a2e2e14b9c78abce85a98b1310a5e1eb2cc",
+    "Difficulty": 0,
+    "Nonce": "0",
+    "LeaderID": 2
+   }
+  ],
+  "BlockchainHash": "fec900fdaa77964be684bc91cdbe118ba09a6cbc470c1c0415ea649eee92c7d6"
+ }
+]
