@@ -38,6 +38,22 @@ import {View} from "react-native";
               }}
             />
 
+
+            <Tab.Screen name="Smart Home" component={SmartHomeScreen} 
+               options={{
+                tabBarIcon: (tabInfo) => {
+                  return (
+                    <Ionicons
+                      name="bulb"
+                      size={24}
+                      color={tabInfo.focused ? "#0F3443" : "#8e8e93"}
+                    />
+                  );
+                },
+              }}
+            />
+
+
             <Tab.Screen name="EV" component={QRScannerScreen} 
                options={{
                 tabBarIcon: (tabInfo) => {
@@ -53,19 +69,6 @@ import {View} from "react-native";
             />
 
 
-            <Tab.Screen name="Smart Home" component={SmartHomeScreen} 
-               options={{
-                tabBarIcon: (tabInfo) => {
-                  return (
-                    <Ionicons
-                      name="home"
-                      size={24}
-                      color={tabInfo.focused ? "#0F3443" : "#8e8e93"}
-                    />
-                  );
-                },
-              }}
-            />
 
             <Tab.Screen name="Market" component={MarketScreen} 
                options={{

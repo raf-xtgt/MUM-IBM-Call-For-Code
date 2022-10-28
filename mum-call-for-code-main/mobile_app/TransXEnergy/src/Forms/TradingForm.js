@@ -28,6 +28,7 @@ export default function TradingForm({chosenFeature, formHeader}){
         const response = await energyRequestApi.createEnergyRequest(energyRequest)
         console.log("SH Energy request response on the frontend side", response)
         if (response.Success){
+            setOrderedAmount(0)
             return (
                 Alert.alert(
                     "Success",

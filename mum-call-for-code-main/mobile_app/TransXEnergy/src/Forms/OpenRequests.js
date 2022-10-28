@@ -12,9 +12,9 @@ const wait = (timeout) => {
 
 export default function OpenRequests({}){
 
-    
     const [refreshing, setRefreshing] = useState(false);
     const [openRequests, getAllEnergyRequests ] = energyRequests()
+    console.log(openRequests)
     let data = {}
 
     useEffect( () => {
@@ -28,6 +28,21 @@ export default function OpenRequests({}){
         wait(2000).then(() => getAllEnergyRequests());
 
     }, []);
+
+    // runs the customer matching every 30 mins
+    useEffect(() => {
+    const interval = setInterval(async () => {
+        // console.log('This will be called every 30 seconds');
+        // this will be run every 30 mins
+        let data = await runCM()
+        console.log("Retrieved blockchain data", data.Data)
+
+    }, 1800 * 1000);
+
+    return () => clearInterval(interval);
+    }, []);
+
+
 
     // run customer matching
     const runCM = async () => {
@@ -62,19 +77,14 @@ export default function OpenRequests({}){
             >
             <Text style={styles.text}> 
                 Bid on Energy Requests
-                {/* <TouchableOpacity style={styles.iconStyle}>
-                    <Ionicons
-                        name="sync-circle"
-                        size={24}
-                    />
-                </TouchableOpacity> */}
+
                 
             </Text>
             
             <View style={styles.listHeader}>
                 <Text style={styles.headerText}> Energy (kWh) </Text>
                 <Text style={styles.headerText}> Price (RM) </Text>
-                <Text style={styles.headerText}> Elapsed Time </Text>
+                <Text style={styles.headerText}> Type </Text>
             </View>
 
             
@@ -84,18 +94,18 @@ export default function OpenRequests({}){
                    keyExtractor={(request) => request.requestId} 
                    renderItem=
                     {
-                        ({item}) => (<OpenRequestCard request={item}/>)
+                        ({item}) => (<OpenRequestCard request={item} />)
                     }
             />
 
-            <TouchableOpacity style={styles.iconStyle}
+            {/* <TouchableOpacity style={styles.iconStyle}
                 onPress= {() => runCM()}
             >
                 <Ionicons
                     name="sync-circle"
                     size={36}
                 />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </ScrollView>
 
         
@@ -110,7 +120,9 @@ const styles = StyleSheet.create({
         //marginVertical:100,
         flex:1, // this here is needed for scrolling !!!
         height:300,
-        width:'100%'
+        width:'100%',
+        paddingVertical:10,
+        marginVertical: 20,
     },
     text:{
         textAlign:"center",

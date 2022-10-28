@@ -70,6 +70,11 @@ export default function SmartHome () {
     return (
         <ScrollView >
 
+            <View style={[styles.textContainer]}>
+                <Text style={styles.headerText}> Smart Home Energy Trading</Text>
+            </View>
+
+
           {/* Show energy Prediction */}
           <View>
             <BarGraph 
@@ -112,6 +117,21 @@ const styles = StyleSheet.create({
         alignItems:"center", // center the child items vertically
         justifyContent:"center", // center the child items horizontally,
         
+    },
+    textContainer:{
+      paddingVertical:10,
+      marginVertical: 10,
+      alignSelf:"stretch", // take up the horizontal space available on screen
+      borderRadius:50,
+      //paddingVertical:30,
+      marginHorizontal:10,
+      alignItems:"center", // center the child items vertically
+      justifyContent:"center", // center the child items horizontally,
+  
+    },
+    headerText:{
+      fontSize:20,
+      fontWeight:'bold'
     },
 
     cardContainer:{

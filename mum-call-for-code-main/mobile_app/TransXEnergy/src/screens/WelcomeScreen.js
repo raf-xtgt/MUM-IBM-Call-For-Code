@@ -7,17 +7,6 @@ import blockchainApi from '../middleware/blockchain'
 
 function WelcomeScreen({navigation}) {
 
-    
-    // useEffect(() => {
-    // const interval = setInterval(async () => {
-    //     console.log('This will be called every 2 seconds');
-    //     let data = await blockchainApi.getBlockchain()
-    //     console.log("Retrieved blockchain data", data.Data)
-
-    // }, 5000);
-
-    // return () => clearInterval(interval);
-    // }, []);
 
     const [blockchain, setBlockchain] = useState([])
 
@@ -49,7 +38,7 @@ function WelcomeScreen({navigation}) {
                         </View>
                             <TouchableOpacity 
                                 style={styles.cardButton}
-                                onPress={() => navigation.navigate("EV")}>
+                                onPress={() => navigation.navigate("Smart Home")}>
                                 <Text>Let's Go</Text>
                             </TouchableOpacity>
                     </View>

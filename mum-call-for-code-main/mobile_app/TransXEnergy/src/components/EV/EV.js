@@ -1,4 +1,4 @@
-import { StyleSheet, View, ScrollView} from 'react-native';
+import { StyleSheet, Text, View, ScrollView} from 'react-native';
 //custom components
 import { elevation } from '../../styles/styles';
 import ChargingForm from '../../Forms/ChargingForm';
@@ -49,6 +49,10 @@ export default function EV ({activeTerm}) {
     return (
         <ScrollView style={styles.mainContainer}>
 
+            <View style={[styles.textContainer]}>
+                <Text style={styles.headerText}> Charging Station</Text>
+            </View>
+
             <View style={[styles.container, elevation]}>
                 <ChargingForm  
                     style={styles.formContainer}
@@ -75,6 +79,21 @@ const styles = StyleSheet.create({
     marginTop:20
   },
 
+  textContainer:{
+    paddingVertical:10,
+    marginVertical: 10,
+    alignSelf:"stretch", // take up the horizontal space available on screen
+    borderRadius:50,
+    //paddingVertical:30,
+    marginHorizontal:10,
+    alignItems:"center", // center the child items vertically
+    justifyContent:"center", // center the child items horizontally,
+
+  },
+  headerText:{
+    fontSize:20,
+    fontWeight:'bold'
+  },
   graphContainer:{
     paddingVertical:10,
         marginVertical: 20,

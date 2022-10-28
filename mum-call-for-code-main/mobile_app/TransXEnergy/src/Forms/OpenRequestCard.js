@@ -1,9 +1,11 @@
+import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 import { elevation } from "../styles/styles";
 import * as RootNavigation from '../../RootNavigation'
 
-export default function OpenRequestCard({request}){
+export default function OpenRequestCard({request, elapsedTime}){
 
+    const [time, setTime] = useState(0)
     const options = 
     {
         buyerName:'buyer1', 
@@ -23,7 +25,7 @@ export default function OpenRequestCard({request}){
             <View style={[styles.elevation, styles.container]}>
                 <Text style={[styles.info, styles.energyTxt]}> {request.UserEnergy} </Text>
                 <Text style={[styles.info, styles.priceTxt]}> {Math.round((request.UserPrice + Number.EPSILON) * 100) / 100 } </Text>
-                <Text style={[styles.info, styles.timeTxt]}> 30s </Text>
+                <Text style={[styles.info, styles.timeTxt]}> {request.Prosumer_or_EV} </Text>
             </View>
         </TouchableOpacity>
     )

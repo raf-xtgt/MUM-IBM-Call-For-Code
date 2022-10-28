@@ -58,7 +58,11 @@ export default function BidScreen({route}){
           <LinearGradient
           colors={['#EBEDEC', '#0F3443']}
           style={styles.container}>
-            
+          
+          <View style={[styles.textContainer]}>
+                <Text style={styles.screenHeaderText}> Bid on Energy Requests</Text>
+            </View>
+
           {/* Energy production prediction */}
           <View>
               <BarGraph 
@@ -134,6 +138,24 @@ const styles = StyleSheet.create({
       //backgroundColor: '#466D1D',
       alignItems:"center", // center the child items vertically
       //justifyContent:"center", // center the child items horizontally,
+    },
+
+    textContainer:{
+      paddingVertical:10,
+      marginVertical: 10,
+      alignSelf:"stretch", // take up the horizontal space available on screen
+      borderRadius:50,
+      //paddingVertical:30,
+      marginHorizontal:10,
+      alignItems:"center", // center the child items vertically
+      justifyContent:"center", // center the child items horizontally,
+  
+    },
+    screenHeaderText:{
+      fontSize:20,
+      fontWeight:'bold',
+      color:'black',
+    
     },
 
     infoContainer:{
