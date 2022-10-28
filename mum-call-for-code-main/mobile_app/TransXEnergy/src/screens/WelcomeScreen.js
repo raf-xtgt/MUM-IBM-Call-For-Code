@@ -33,7 +33,7 @@ function WelcomeScreen({navigation}) {
                         {/* Intro text */}
                         <View>
                             <Text style={styles.infoText}>
-                                Satisfy energy demands through optimal peer to peer trading
+                                Satisfy energy demands through optimal peer to peer trading.
                             </Text>
                         </View>
                             <TouchableOpacity 

@@ -39,6 +39,20 @@ import {View} from "react-native";
             />
 
 
+            <Tab.Screen name="Market" component={MarketScreen} 
+               options={{
+                tabBarIcon: (tabInfo) => {
+                  return (
+                    <Ionicons
+                      name="list"
+                      size={24}
+                      color={tabInfo.focused ? "#0F3443": "#8e8e93"}
+                    />
+                  );
+                },
+              }}
+            />
+
             <Tab.Screen name="Smart Home" component={SmartHomeScreen} 
                options={{
                 tabBarIcon: (tabInfo) => {
@@ -70,19 +84,7 @@ import {View} from "react-native";
 
 
 
-            <Tab.Screen name="Market" component={MarketScreen} 
-               options={{
-                tabBarIcon: (tabInfo) => {
-                  return (
-                    <Ionicons
-                      name="list"
-                      size={24}
-                      color={tabInfo.focused ? "#0F3443": "#8e8e93"}
-                    />
-                  );
-                },
-              }}
-            />
+            
 
             {/* Navigation of hidden components are shown here */}
 
