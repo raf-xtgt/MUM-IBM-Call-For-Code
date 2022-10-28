@@ -17,6 +17,14 @@ export default function OpenRequestCard({request, elapsedTime}){
         requestData:request
     } 
 
+    // runs the customer matching every 30 mins
+    useEffect(() => {
+        const interval = setInterval(async () => {
+            setTime( (time) => time + 1 )
+        }, 60 * 1000);
+    
+        return () => clearInterval(interval);
+        }, []);
 
     return(
         <TouchableOpacity onPress={() => RootNavigation.navigate('Bid', options )}>

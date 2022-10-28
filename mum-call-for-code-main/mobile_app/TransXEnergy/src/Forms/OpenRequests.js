@@ -12,10 +12,9 @@ const wait = (timeout) => {
 
 export default function OpenRequests({}){
 
+    const [time, setTime] = useState(1)
     const [refreshing, setRefreshing] = useState(false);
     const [openRequests, getAllEnergyRequests ] = energyRequests()
-    console.log(openRequests)
-    let data = {}
 
     useEffect( () => {
         getAllEnergyRequests()
@@ -43,6 +42,15 @@ export default function OpenRequests({}){
     }, []);
 
 
+        // shows time interval
+        useEffect(() => {
+            const interval = setInterval(async () => {
+                setTime( (time) => time + 1 )
+            }, 60 * 1000);
+        
+            return () => clearInterval(interval);
+            }, []);
+    
 
     // run customer matching
     const runCM = async () => {
@@ -77,8 +85,15 @@ export default function OpenRequests({}){
             >
             <Text style={styles.text}> 
                 Bid on Energy Requests
+            </Text>
 
-                
+
+            <Text style={styles.timeText}> 
+                Time till the next round of customer matching : {30-time} min(s)
+            </Text>
+
+            <Text style={styles.text}> 
+                Open Energy Requests
             </Text>
             
             <View style={styles.listHeader}>
@@ -129,6 +144,12 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 20,
     
+    },
+    timeText:{
+        textAlign:"center",
+        fontWeight: "bold",
+        fontSize: 15,
+        marginVertical:20
     },
 
     listHeader:{
