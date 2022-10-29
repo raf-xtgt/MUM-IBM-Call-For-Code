@@ -98,7 +98,7 @@ export interface Block {
 	data:Transaction[],
 	hash:string,       
 	prevHash: string, 
-	nonce:string,
+	// nonce:string,
     //info:string,
 }
 

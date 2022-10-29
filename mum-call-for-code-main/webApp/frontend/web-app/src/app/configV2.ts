@@ -19,6 +19,7 @@ export class ConfigServiceV2 {
   private _getEnergyRequests: string = this._configUrl + "EnergyRequest/GetEnergyRequest";
   private _getClosedEnergyRequests: string = this._configUrl + "EnergyRequest/GetClosedEnergyRequest";
   private _bidRequests: string = this._configUrl + "EnergyRequest/Bid";
+  private _getBlockchain: string = this._configUrl + "Blockchain/GetBlockchain";
   
   // get sell requests for the user
 
@@ -44,8 +45,13 @@ export class ConfigServiceV2 {
 
   // make a bid
   makeBid(data:any){
-
     return this.http.post(this._bidRequests, data)
+  }
+
+  // get blockchain
+  getBlockchain(){
+    let data = "blockchain"
+    return this.http.post(this._getBlockchain, data)
   }
 
 }

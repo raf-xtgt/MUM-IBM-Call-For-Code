@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfigService } from '../config.service';
+import { ConfigServiceV2 } from '../configV2';
 import { JWTService } from '../userAuth.service';
 import { Block } from '../classes';
 import { MatTableDataSource } from '@angular/material/table';
@@ -18,10 +19,10 @@ import Swal from 'sweetalert2'
 })
 export class BlockchainPageComponent implements OnInit {
 
-  displayedColumns: string[] = ['index', 'hash', 'nonce', 'prevHash']
+  displayedColumns: string[] = ['index', 'hash', 'prevHash']
   dataSource = new MatTableDataSource<Block>(blockData)
   
-  constructor(private _config:ConfigService, private _jwtServ:JWTService, public dialog: MatDialog) { }
+  constructor(private _configV2:ConfigServiceV2, private _config:ConfigService, private _jwtServ:JWTService, public dialog: MatDialog) { }
   isValidator:boolean = false;
   isClerk :boolean = false;
   // loading before updated blockchain is available
@@ -36,11 +37,13 @@ export class BlockchainPageComponent implements OnInit {
   // add the paginator
   @ViewChild(MatPaginator) paginator: MatPaginator | any
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
 
+  
   // uncomment this to re-create the genesis block
     // this.createGenesis();
-  this.getUserType()
+    await this.getBlockchain()
+  //this.getUserType()
 
 
   }
@@ -67,30 +70,31 @@ export class BlockchainPageComponent implements OnInit {
     })
   }
 
-  getBlockchain(){
+  async getBlockchain(){
     blockData = []
-    this._config.getCurrentBlockchain().subscribe(data => {
-      
+    await this._configV2.getBlockchain().subscribe(data => {
       let response = JSON.parse(JSON.stringify(data))
-      console.log("current blockchain", response.Blockchain)
-      for (let i=0; i<response.Blockchain.length; i++){
-        let block = response.Blockchain[i]
+      //console.log("Blockchain response", response)
+      for (let i=0; i<response.Data.length; i++){
+        let block = response.Data[i]
+        //console.log(block)
         this.blockInfo.push(block)
         let data :Block = {
           index: block.Index,
-          data:block.Data,
+          data:block,
           hash:block.Hash,
-          nonce:block.Nonce,
           prevHash:block.PrevHash,
         }
         blockData.push(data)
       }
-      
       // instantiate list
       this.dataSource = new MatTableDataSource<Block>(blockData)
       this.dataSource.paginator = this.paginator
-      
     })
+      
+      
+      
+  
     this.isLoading=false
   }
 
@@ -169,8 +173,36 @@ export class BlockchainPageComponent implements OnInit {
 
   }
 
+   // to show the transaction data when the info button is clicked
+   showBlockInfo(data:any){
+    //console.log("Block info", data)
+    let energyFromTNB = data.TNBEnergy
+    let TNBReceivable = data.TNBMoney
+    // the string that will be shown on html
+    let htmlStr = ""
+    for (let i=0; i<data.Data.length; i++){
+      let obj = data.Data[i]
+      htmlStr += "<br><b>Buyer:</b> "+obj.UserID+"\n<br>"
+      htmlStr += "<b>Total Energy Traded:</b> "+obj.Energy.toFixed(2)+" kWH\n<br>"
+      htmlStr += "<b>Total Fiat Traded:</b> RM "+( Math.abs(obj.Money) + Math.abs(obj.Price) )+"\n<br>"
+    }
+    htmlStr += "<b>TNB Income:</b> RM  "+TNBReceivable.toFixed(2)+"\n<br>"
+    htmlStr += "<b>Energy From TNB:</b> RM  "+energyFromTNB.toFixed(2)+"\n<br>"
+
+    // the modal
+    Swal.fire({
+      title: 'Block Info<br>Hash:'+data.Hash,
+      icon: 'info',
+      html: htmlStr,
+      showCloseButton: true,     
+    })
+    
+  }
+
 
 }
+
+
 
 let blockData : Block[] = []
 
