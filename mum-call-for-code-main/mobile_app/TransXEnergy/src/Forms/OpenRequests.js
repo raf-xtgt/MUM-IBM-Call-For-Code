@@ -90,7 +90,17 @@ export default function OpenRequests({}){
 
             <Text style={styles.timeText}> 
                 Time till the next round of customer matching : {30-time} min(s)
+                {/* Time till the next round of customer matching : 0 min(s) */}
+                
             </Text>
+            {/* <TouchableOpacity style={styles.iconStyle}
+                onPress= {() => runCM()}
+            >
+                <Ionicons
+                    name="sync-circle"
+                    size={36}
+                />
+            </TouchableOpacity> */}
 
             <Text style={styles.text}> 
                 Open Energy Requests
@@ -113,14 +123,7 @@ export default function OpenRequests({}){
                     }
             />
 
-            {/* <TouchableOpacity style={styles.iconStyle}
-                onPress= {() => runCM()}
-            >
-                <Ionicons
-                    name="sync-circle"
-                    size={36}
-                />
-            </TouchableOpacity> */}
+            
         </ScrollView>
 
         

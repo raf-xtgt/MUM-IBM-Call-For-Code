@@ -1,4 +1,4 @@
-const serverURL = "http://192.168.100.13:8080/"
+const serverURL = "http://192.168.100.13:8989/"
 const energyRequest = "Blockchain/"
 const blockchainRequest = serverURL + energyRequest + 'WriteBlockchain'
 const getBlockchainRequest = serverURL + energyRequest + 'GetBlockchain'

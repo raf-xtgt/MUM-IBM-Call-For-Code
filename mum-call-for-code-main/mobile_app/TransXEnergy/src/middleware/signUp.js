@@ -2,7 +2,7 @@
 
 // to hold the outputs from the functions
 import { useState } from "react"
-const serverURL = "http://192.168.100.13:8080/"
+const serverURL = "http://192.168.100.13:8989/"
 const authRequest = "Auth/"
 const signUpRequest = serverURL + authRequest + "SignUp"
 

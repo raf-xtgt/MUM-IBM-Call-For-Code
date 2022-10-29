@@ -4,7 +4,7 @@
  */
 // to hold the outputs from the functions
 
-const serverURL = "http://192.168.100.13:8080/"
+const serverURL = "http://192.168.100.13:8989/"
 const golangServer = "http://192.168.100.13:8888/"
 const initCMRequest = golangServer + "InitCM"
 const energyRequest = "CustomerMatching/"

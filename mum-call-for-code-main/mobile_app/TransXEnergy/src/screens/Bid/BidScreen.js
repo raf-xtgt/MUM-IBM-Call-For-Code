@@ -21,19 +21,19 @@ export default function BidScreen({route}){
 
       {
         value: 10,        
-        label: '8:30AM',
+        label: '9:30AM',
         frontColor:'#00539CFF'
       },
 
       {
         value: -10,        
-        label: '8:30AM',
+        label: '11:30AM',
         frontColor:'#EEA47FFF'
       },
 
       {
         value: 10,        
-        label: '8:30AM',
+        label: '4:30PM',
         frontColor:'#00539CFF'
       },
       

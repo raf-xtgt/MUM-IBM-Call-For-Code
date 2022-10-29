@@ -1,5 +1,5 @@
 import {useState} from "react"
-const serverURL = "http://192.168.100.13:8080/"
+const serverURL = "http://192.168.100.13:8989/"
 const energyRequest = "EnergyRequest/"
 const getEnergyRequests = serverURL + energyRequest + 'GetEnergyRequest'
 

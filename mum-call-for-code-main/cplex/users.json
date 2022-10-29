@@ -658,5 +658,38 @@
   "ICNum": 1234,
   "MoneyBalance": 2000,
   "EnergyBalance": 800
+ },
+ {
+  "UserID": "",
+  "Email": "",
+  "Password": "",
+  "Address": "",
+  "SmartMeterNo": 0,
+  "Type": "Leader",
+  "ICNum": 1234,
+  "MoneyBalance": 2000,
+  "EnergyBalance": 800
+ },
+ {
+  "UserID": "",
+  "Email": "",
+  "Password": "",
+  "Address": "",
+  "SmartMeterNo": 0,
+  "Type": "Leader",
+  "ICNum": 1234,
+  "MoneyBalance": 2000,
+  "EnergyBalance": 800
+ },
+ {
+  "UserID": "",
+  "Email": "",
+  "Password": "",
+  "Address": "",
+  "SmartMeterNo": 0,
+  "Type": "Leader",
+  "ICNum": 1234,
+  "MoneyBalance": 2000,
+  "EnergyBalance": 800
  }
 ]
