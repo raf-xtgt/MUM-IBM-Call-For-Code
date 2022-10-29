@@ -5,6 +5,9 @@ import { BuyEnergyRequest } from '../classes';
 import {Router} from '@angular/router';
 import { SendDataService } from '../send-data.service';
 import { JWTService } from '../userAuth.service';
+import {map, Subscription, timer} from 'rxjs';  
+import Swal from 'sweetalert2'
+
 
 
 // imports required for the pagination
@@ -31,6 +34,8 @@ export class NewMarketPageComponent implements OnInit {
   public buyerId: string = ""
   public message: string = "";
   private _loggedInUserId : string = "" //id of the user that is logged in
+  public timerSubscription: Subscription|any; 
+
 
   // for the pagination of closed buy requests
   closedRequestDisplayedCols: string[] = ['reqId', 'energy', 'price', 'type' ]
@@ -42,6 +47,36 @@ export class NewMarketPageComponent implements OnInit {
 
 
   async ngOnInit(): Promise<void> {
+
+    // timer(0, 10000) call the function immediately and every 10 seconds 
+    this.timerSubscription = timer(0, 1800*1000).pipe( 
+      map(async () => { 
+        console.log("This is run every 10s now")
+        await this._configV2.getCMData().subscribe(async data => {
+          let responseCMData = JSON.parse(JSON.stringify(data))
+          console.log("CM Data", responseCMData)
+          await this._configV2.runCM(responseCMData.Data).subscribe(async data=> {
+            let responseCM = JSON.parse(JSON.stringify(data))
+            console.log("Response after running cm", responseCM)
+            let blockchain = {
+              data:responseCM
+            }
+            await this._configV2.writeToBlockchain(blockchain).subscribe(data => {
+              let blockchainResp = JSON.parse(JSON.stringify(data))
+              if (blockchainResp.Success){
+                Swal.fire('Round of Customer Matching complete ', '', 'success')
+              }
+              
+            })
+
+
+          })
+        })
+      }) 
+    ).subscribe(); 
+
+
+
     // check if the jwt is stored in local storage or not
     if (this._jwtServ.checkToken()){
       this._jwtServ.verifyToken().subscribe(data => {
@@ -59,7 +94,10 @@ export class NewMarketPageComponent implements OnInit {
 
     }
   }
-
+// don't forget to unsubscribe when the Observable is not necessary anymore 
+ngOnDestroy(): void { 
+  this.timerSubscription.unsubscribe(); 
+} 
   
   async getBuyRequests(){
     this._configV2.getClosedEnergyRequests().subscribe(data => {

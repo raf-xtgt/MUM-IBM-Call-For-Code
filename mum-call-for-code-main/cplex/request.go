@@ -40,7 +40,7 @@ func initializeCM(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Inside buy energy request")
 	var newRequest []BuySellRequest
 
-	//w.Header().Add("Access-Control-Allow-Origin", "*")
+	w.Header().Add("Access-Control-Allow-Origin", "*")
 	w.Header().Add("Access-Control-Allow-Methods", "GET,POST,OPTIONS,DELETE,PUT")
 
 	// get the data from json body

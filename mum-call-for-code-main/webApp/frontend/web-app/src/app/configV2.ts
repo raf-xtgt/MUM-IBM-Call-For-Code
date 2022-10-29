@@ -1,13 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// The HttpClient service makes use of observables for all transactions. You must import the RxJS observable and operator symbols that appear in the example snippets.
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-import { User, Token, HouseholdEnergyData, BuyEnergyRequest, ProdForecastRequest, SellEnergyRequest, Validator } from './classes';
 
-/** This file will allow the frontend to communicate with the backend
-* using Angular's HTTP Client
-*/
 
 
 @Injectable({
@@ -16,13 +9,14 @@ import { User, Token, HouseholdEnergyData, BuyEnergyRequest, ProdForecastRequest
 export class ConfigServiceV2 {
 
   private _configUrl: string = "http://localhost:8989/";
+  private _golangServer:string = "http://localhost:8888/"
   private _getEnergyRequests: string = this._configUrl + "EnergyRequest/GetEnergyRequest";
   private _getClosedEnergyRequests: string = this._configUrl + "EnergyRequest/GetClosedEnergyRequest";
   private _bidRequests: string = this._configUrl + "EnergyRequest/Bid";
   private _getBlockchain: string = this._configUrl + "Blockchain/GetBlockchain";
-  
-  // get sell requests for the user
-
+  private _getCMData: string = this._configUrl + "CustomerMatching/GetCMData";
+  private _runCM: string = this._golangServer + "InitCM";
+  private _writeBlockchain:string = this._configUrl + 'Blockchain/WriteBlockchain'
   TOKEN_KEY = 'token';
 
 
@@ -54,4 +48,19 @@ export class ConfigServiceV2 {
     return this.http.post(this._getBlockchain, data)
   }
 
+  getCMData(){
+    let data = "getCMData"
+    return this.http.post(this._getCMData, data)
+  }
+
+  runCM(data:any){
+    const body = JSON.stringify(data)
+    return this.http.post(this._runCM, body)
+  }
+
+  writeToBlockchain(data:any){
+    return this.http.post(this._writeBlockchain, data)
+ 
+  }
+  
 }
