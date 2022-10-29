@@ -42,7 +42,7 @@ export class NewMarketPageComponent implements OnInit {
 
 
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     // check if the jwt is stored in local storage or not
     if (this._jwtServ.checkToken()){
       this._jwtServ.verifyToken().subscribe(data => {
@@ -57,6 +57,7 @@ export class NewMarketPageComponent implements OnInit {
           this.reqData.currentMessage.subscribe(message => this.requestForBid = message)
         }        
       })
+
     }
   }
 

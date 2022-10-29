@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { ConfigService } from '../config.service';
-import { BuyEnergyRequest } from '../classes';
+import { BuyEnergyRequest, energyRequests } from '../classes';
 import {Router} from '@angular/router';
 import { SendDataService } from '../send-data.service';
 import { JWTService } from '../userAuth.service';
 import Swal from 'sweetalert2'
 import { TimerComponent } from '../timer/timer.component';
+import { ConfigServiceV2 } from '../configV2';
 
 
 // imports required for the pagination
@@ -20,7 +21,7 @@ import { openRequests } from '../classes';
 })
 export class OpenRequestsPageComponent implements OnInit {
 
-  constructor(private _config:ConfigService, private router: Router, private reqData: SendDataService, private _jwtServ:JWTService) { }
+  constructor(private _configV2:ConfigServiceV2 ,private _config:ConfigService, private router: Router, private reqData: SendDataService, private _jwtServ:JWTService) { }
   
   public allOpenBuyRequests:Array<BuyEnergyRequest>=[];
   public allClosedBuyRequests:Array<BuyEnergyRequest>=[];
@@ -36,9 +37,13 @@ export class OpenRequestsPageComponent implements OnInit {
    openedRequestDisplayedCols: string[] = ['buyer', 'energyAmount', 'fiatAmount', 'reqId','remTime', 'bidBtn']
    openRequestDataSource = new MatTableDataSource<openRequests>(allOpenRequests)
      // add the paginator
+
+     energyRequestDisplayedCols: string[] = [ 'energy', 'price', 'type', 'bidBtn']
+     energyRequestDataSource = new MatTableDataSource<energyRequests>(allEnergyRequests)
+  
      @ViewChild(MatPaginator) openedReqPaginator: MatPaginator | any
 
-     ngOnInit(): void {
+     async ngOnInit(): Promise<void> {
       // check if the jwt is stored in local storage or not
       if (this._jwtServ.checkToken()){
         this._jwtServ.verifyToken().subscribe(data => {
@@ -54,6 +59,7 @@ export class OpenRequestsPageComponent implements OnInit {
           }        
         })
       }
+      await this.getEnergyRequests()
     }
 
     async getBuyRequests(){
@@ -142,7 +148,44 @@ export class OpenRequestsPageComponent implements OnInit {
     }
   
 
+    async getEnergyRequests(){
+   
+      this._configV2.getOpenEnergyRequests().subscribe(data => {
+        //console.log("Buy requests data for market page", data)
+        let response = JSON.parse(JSON.stringify(data))
+        console.log("V2 Buy requests data for market page", response)
+        let reqArr = response.Data
+        for(let i = 0; i < reqArr.length; i++) {
+          let obj = reqArr[i]
+        
+                        
+              let enRequest:energyRequests={
+                type: obj.Prosumer_or_EV,
+                price: obj.UserPrice,
+                energy: obj.UserEnergy,
+                reqId: obj.requestId,
+                bidBtn: ''
+              }
+              allEnergyRequests.push(enRequest)
+  
+             
+            // instantiate pogination list for open requests
+            this.energyRequestDataSource = new MatTableDataSource<energyRequests>(allEnergyRequests)
+            this.energyRequestDataSource.paginator = this.openedReqPaginator
+  
+            
+          
+          
+      }
+        
+  
+      })
+    }
+  
+  
+
 }
 
 // for the open requests
 let allOpenRequests: openRequests[] = []
+let allEnergyRequests: energyRequests[] = []

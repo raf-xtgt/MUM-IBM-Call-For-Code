@@ -118,6 +118,15 @@ export interface closedRequests{
     remTime:number|string
 }
 
+
+export interface energyRequests{
+    type:string,
+    price:number, 
+    energy:number,
+    reqId:string,
+    bidBtn:string
+}
+
 export interface openRequests{
     buyer:string,
     energyAmount:number, 
