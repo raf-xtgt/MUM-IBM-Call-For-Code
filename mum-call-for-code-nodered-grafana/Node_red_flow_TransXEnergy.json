@@ -1,0 +1,591 @@
+[
+    {
+        "id": "0f493f6c131e62e2",
+        "type": "tab",
+        "label": "AmSolar",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f2c6f6055aed0cf9",
+        "type": "debug",
+        "z": "0f493f6c131e62e2",
+        "name": "Function output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "2d301e527b41c790",
+        "type": "mqtt in",
+        "z": "0f493f6c131e62e2",
+        "name": "",
+        "topic": "data",
+        "qos": "1",
+        "datatype": "json",
+        "broker": "c5f7c69811e4d36c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 470,
+        "y": 160,
+        "wires": [
+            [
+                "c6caa9685771afbc",
+                "24b04d2c0b60a57e",
+                "38bb421b9f7f2a2a",
+                "dad094623ebe07a4",
+                "264c7d06ae776956",
+                "d99e696f823de1c5"
+            ]
+        ]
+    },
+    {
+        "id": "c6caa9685771afbc",
+        "type": "debug",
+        "z": "0f493f6c131e62e2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "24b04d2c0b60a57e",
+        "type": "function",
+        "z": "0f493f6c131e62e2",
+        "name": "Generate string",
+        "func": "let voltage = msg.payload[0][0];\nlet current = msg.payload[0][1];\nlet power = msg.payload[0][2];\n\nlet newline = \" Voltage: \" + voltage.toString() + \"V Current: \" + current.toString() + \" A Power: \" + power.toString() + \" W\";\n\nlet output = {payload: newline};\n\nreturn output;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 160,
+        "wires": [
+            [
+                "f2c6f6055aed0cf9",
+                "338a69bc83989712"
+            ]
+        ]
+    },
+    {
+        "id": "338a69bc83989712",
+        "type": "file",
+        "z": "0f493f6c131e62e2",
+        "name": "Update IBM_Amsolar_Data",
+        "filename": "/home/pi/Desktop/IBM/IBM_Amsolar_Data",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 960,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5df933b5d4186587",
+        "type": "ui_chart",
+        "z": "0f493f6c131e62e2",
+        "name": "",
+        "group": "a740b326afd8bb67",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Power",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 890,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "38bb421b9f7f2a2a",
+        "type": "function",
+        "z": "0f493f6c131e62e2",
+        "name": "output power",
+        "func": "msg.payload = msg.payload[0][2];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 280,
+        "wires": [
+            [
+                "5df933b5d4186587"
+            ]
+        ]
+    },
+    {
+        "id": "dad094623ebe07a4",
+        "type": "function",
+        "z": "0f493f6c131e62e2",
+        "name": "output voltage",
+        "func": "msg.payload = msg.payload[0][0];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 340,
+        "wires": [
+            [
+                "438abae19a1c34e3"
+            ]
+        ]
+    },
+    {
+        "id": "264c7d06ae776956",
+        "type": "function",
+        "z": "0f493f6c131e62e2",
+        "name": "output current",
+        "func": "msg.payload = msg.payload[0][1];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 400,
+        "wires": [
+            [
+                "630c0074ea271640"
+            ]
+        ]
+    },
+    {
+        "id": "438abae19a1c34e3",
+        "type": "ui_gauge",
+        "z": "0f493f6c131e62e2",
+        "name": "",
+        "group": "a740b326afd8bb67",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Voltage",
+        "label": "V",
+        "format": "{{value}}",
+        "min": "200",
+        "max": "300",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 900,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "630c0074ea271640",
+        "type": "ui_text",
+        "z": "0f493f6c131e62e2",
+        "group": "a740b326afd8bb67",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Current: ",
+        "format": "{{msg.payload}} A",
+        "layout": "row-spread",
+        "className": "",
+        "x": 900,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "3ada74c382e7fb34",
+        "type": "mqtt in",
+        "z": "0f493f6c131e62e2",
+        "name": "",
+        "topic": "IBM_measurement",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "a4c48fe13f92c3c4",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 510,
+        "y": 720,
+        "wires": [
+            [
+                "801bb1a998c123ce"
+            ]
+        ]
+    },
+    {
+        "id": "801bb1a998c123ce",
+        "type": "function",
+        "z": "0f493f6c131e62e2",
+        "name": "",
+        "func": "msg.payload = Number(msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 720,
+        "wires": [
+            [
+                "d7e24f9f8e3d1f6c"
+            ]
+        ]
+    },
+    {
+        "id": "d7e24f9f8e3d1f6c",
+        "type": "influxdb out",
+        "z": "0f493f6c131e62e2",
+        "influxdb": "38b5536d56c0f542",
+        "name": "Influx_node",
+        "measurement": "IBM_measurement",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "a74ef646f84a01ea",
+        "bucket": "IBM",
+        "x": 890,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "d99e696f823de1c5",
+        "type": "function",
+        "z": "0f493f6c131e62e2",
+        "name": "prep data for influx",
+        "func": "msg.payload = {\n    voltage: msg.payload[0][0],\n    current: msg.payload[0][1],\n    power: -msg.payload[0][2],\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 480,
+        "wires": [
+            [
+                "b7d2218a4aff7d9c"
+            ]
+        ]
+    },
+    {
+        "id": "b7d2218a4aff7d9c",
+        "type": "influxdb out",
+        "z": "0f493f6c131e62e2",
+        "influxdb": "373fa459.54e07c",
+        "name": "grafana_data",
+        "measurement": "ibm_grafana",
+        "precision": "s",
+        "retentionPolicy": "",
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "",
+        "bucket": "",
+        "x": 1050,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "a64c8932ad8fc82f",
+        "type": "mqtt in",
+        "z": "0f493f6c131e62e2",
+        "name": "",
+        "topic": "modbus",
+        "qos": "1",
+        "datatype": "json",
+        "broker": "c5f7c69811e4d36c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 480,
+        "y": 600,
+        "wires": [
+            [
+                "ba8f4249f36a4d5b"
+            ]
+        ]
+    },
+    {
+        "id": "ba8f4249f36a4d5b",
+        "type": "function",
+        "z": "0f493f6c131e62e2",
+        "name": "output current",
+        "func": "msg.payload = {\n    solar_power: msg.payload[0],\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 600,
+        "wires": [
+            [
+                "b7d2218a4aff7d9c"
+            ]
+        ]
+    },
+    {
+        "id": "cafa1b0f40598de8",
+        "type": "twc-daily-forecast",
+        "z": "0f493f6c131e62e2",
+        "name": "IBM Weather",
+        "range": "3day",
+        "locationtype": "geocode",
+        "location": "3.0650,101.6009",
+        "lang": "en-US",
+        "units": "m",
+        "apikey": "f7144753a17aa753",
+        "x": 690,
+        "y": 820,
+        "wires": [
+            [
+                "5b03db094a44b62f",
+                "40d6ed3bf0a45285"
+            ]
+        ]
+    },
+    {
+        "id": "ef2b540b5d67f114",
+        "type": "inject",
+        "z": "0f493f6c131e62e2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 490,
+        "y": 820,
+        "wires": [
+            [
+                "cafa1b0f40598de8"
+            ]
+        ]
+    },
+    {
+        "id": "5b03db094a44b62f",
+        "type": "debug",
+        "z": "0f493f6c131e62e2",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "340db668f5c0d3bd",
+        "type": "influxdb out",
+        "z": "0f493f6c131e62e2",
+        "influxdb": "373fa459.54e07c",
+        "name": "grafana_data",
+        "measurement": "ibm_grafana",
+        "precision": "s",
+        "retentionPolicy": "",
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "",
+        "bucket": "",
+        "x": 1090,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "40d6ed3bf0a45285",
+        "type": "function",
+        "z": "0f493f6c131e62e2",
+        "name": "prep data for influx",
+        "func": "msg.payload = {\n    day1_max_temp: msg.payload.calendarDayTemperatureMax[0],\n    day2_max_temp: msg.payload.calendarDayTemperatureMax[1],\n    day3_max_temp: msg.payload.calendarDayTemperatureMax[2],\n    day4_max_temp: msg.payload.calendarDayTemperatureMax[3],\n    day1_narrative: \"Today: \" + msg.payload.narrative[0],\n    day2_narrative: \"Tomorrow: \" + msg.payload.narrative[1],\n    day3_narrative: \"Day after: \" + msg.payload.narrative[2]\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 940,
+        "wires": [
+            [
+                "340db668f5c0d3bd"
+            ]
+        ]
+    },
+    {
+        "id": "c5f7c69811e4d36c",
+        "type": "mqtt-broker",
+        "name": "AmSolar MQTT",
+        "broker": "e6c4d00580d14e1da694b29d66142168.s2.eu.hivemq.cloud",
+        "port": "8883",
+        "tls": "",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "a740b326afd8bb67",
+        "type": "ui_group",
+        "name": "Call For Code",
+        "tab": "34ed7fbe7f5919c9",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a4c48fe13f92c3c4",
+        "type": "mqtt-broker",
+        "name": "HiveMq",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "38b5536d56c0f542",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "IBM_Influx_DB",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "https://us-east-1-1.aws.cloud2.influxdata.com/orgs/a74ef646f84a01ea",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "373fa459.54e07c",
+        "type": "influxdb",
+        "hostname": "192.168.0.168",
+        "port": "8086",
+        "protocol": "http",
+        "database": "IBM",
+        "name": "Influx_IBM",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "1.x",
+        "url": "",
+        "rejectUnauthorized": false
+    },
+    {
+        "id": "f7144753a17aa753",
+        "type": "pwsapikey",
+        "name": "Call for Code"
+    },
+    {
+        "id": "34ed7fbe7f5919c9",
+        "type": "ui_tab",
+        "name": "IBM",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
