@@ -16,7 +16,7 @@ export class SendDataService {
 
   constructor() { }
 
-  changeMessage(buyRequest: BuyEnergyRequest){
+  changeMessage(buyRequest: BuyEnergyRequest|any){
     // when function invoked, 
     this.msgSrc.next(buyRequest)
   }

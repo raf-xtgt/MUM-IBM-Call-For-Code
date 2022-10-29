@@ -18,6 +18,7 @@ export class ConfigServiceV2 {
   private _configUrl: string = "http://localhost:8989/";
   private _getEnergyRequests: string = this._configUrl + "EnergyRequest/GetEnergyRequest";
   private _getClosedEnergyRequests: string = this._configUrl + "EnergyRequest/GetClosedEnergyRequest";
+  private _bidRequests: string = this._configUrl + "EnergyRequest/Bid";
   
   // get sell requests for the user
 
@@ -39,6 +40,12 @@ export class ConfigServiceV2 {
   getClosedEnergyRequests()  {
     let data = "Data"
     return this.http.post(this._getClosedEnergyRequests, data)
+  }
+
+  // make a bid
+  makeBid(data:any){
+
+    return this.http.post(this._bidRequests, data)
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JWTService } from '../userAuth.service';
 import { ConfigService } from '../config.service';
+import { ConfigServiceV2 } from '../configV2';
 import { ModalService } from '../modals.service';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
@@ -22,7 +23,7 @@ import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 })
 export class BidPageComponent implements OnInit {
 
-  
+   
   private dateService = new DateService()
   public modalService = new ModalService()
   public pricingData = new HouseholdEnergyData("", 0, [0,0],  "", 0)
@@ -81,7 +82,7 @@ export class BidPageComponent implements OnInit {
   //message from market page
   public message: string = ""
   // this will hold the buy energy request data for making the bid
-  private requestForBid :BuyEnergyRequest = new BuyEnergyRequest("", 0, 0, false, "", "") 
+  private requestForBid :BuyEnergyRequest|any = new BuyEnergyRequest("", 0, 0, false, "", "") 
 
   // loading before graph and all data are available
   public isLoading: boolean = true;
@@ -101,7 +102,7 @@ export class BidPageComponent implements OnInit {
   private _buyReqId:string = "" // the id of the buy request on which the bid is being made 
 
 
-  constructor(private _jwtServ:JWTService, private _config:ConfigService, private router: Router, private reqData: SendDataService) { }
+  constructor(private confV2:ConfigServiceV2, private _jwtServ:JWTService, private _config:ConfigService, private router: Router, private reqData: SendDataService) { }
 
   ngOnInit(): void {
        // check if the jwt is stored in local storage or not
@@ -118,7 +119,7 @@ export class BidPageComponent implements OnInit {
             // subscribe to the message from the marketpage
             this.reqData.currentMessage.subscribe(message => this.requestForBid = message)
             // bid data is here 
-            console.log(this.requestForBid)
+            console.log("Msg between components",this.requestForBid)
             this.showRequestInfo()
           }
           
@@ -225,12 +226,12 @@ export class BidPageComponent implements OnInit {
       else{
         
         
-        this.energyAmnt = this.requestForBid.energyAmount
-        this.fiatOffer = this.requestForBid.fiatAmount
+        this.energyAmnt = this.requestForBid.energy
+        this.fiatOffer = this.requestForBid.price
         this._fiatReceived = this.bidEnergyInput * this.currentAvgPrice
         //let buyerArr = this.requestForBid.buyerId.split('\n')
         //this.buyer = buyerArr[1];
-        this.buyer = this.requestForBid.buyerId
+        this.buyer = this.requestForBid.reqId
         this._buyReqId = this.requestForBid.reqId
         this.totalBids = 0
       }
@@ -251,25 +252,24 @@ export class BidPageComponent implements OnInit {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          //console.log("Buy request", this._buyRequest)
-          this._fiatReceived = this.bidEnergyInput * this.currentAvgPrice
-          //console.log(this._fiatReceived)
-          let sellingBid = new SellEnergyRequest(this._sellerId, this.bidEnergyInput, this._fiatReceived, "", this._buyReqId)
           
+            let bidData = {
+              BidID: 'BD ',           
+              UserID: this._sellerId,        
+              UserPrice:  (0.2 * this.requestForBid.energy) ,
+              UserEnergy: this.requestForBid.energy,    
+              Prosumer_or_EV : 'SH',
+              Buyer_or_Seller: 'Sell',  // buyer since making enery request
+              Time: '',
+              EnRequestId : this.requestForBid.reqId
+            }
           //if (this.orderValidation(this._buyRequest)){}
             Swal.fire('Your bid has been placed !!', '', 'success')  
-            this._config.makeSellRequest(sellingBid).subscribe(data =>{
+            this.confV2.makeBid(bidData).subscribe(data =>{
               //console.log("The selling bid that is stored in db", data)
             })
           
-          // else{
-          //   Swal.fire({
-          //     icon: 'error',
-          //     title: 'Oops...',
-          //     text: 'Please enter valid energy amount and ensure you have sufficient fiat balance!',
-          //   })
-          // }
-          
+
           
 
         } else if (result.isDismissed) {

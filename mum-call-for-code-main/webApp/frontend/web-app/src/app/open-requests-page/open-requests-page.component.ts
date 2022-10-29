@@ -127,24 +127,15 @@ export class OpenRequestsPageComponent implements OnInit {
       this.router.navigateByUrl('/bid');
     }
   
-    bid(request: openRequests){
-      // check if bidder is a different user or not
-      let buyerIdArr = request.buyer.split('\n')
-      let buyerId = buyerIdArr[1]
-      if (buyerId == this._loggedInUserId){
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'You cannot bid on your own buy request!!',
-        })
-      }
-      else{
-        let requestToSend = new BuyEnergyRequest(buyerId, request.energyAmount, request.fiatAmount, false, request.reqId, request.remTime)
-  
-        //send the request to the bidpage that is listening on the msg
-        this.reqData.changeMessage(requestToSend)
-        this.router.navigateByUrl('/bid');
-      }
+    bid(request: openRequests|any){
+
+      console.log("The bid", request)
+      
+      let requestToSend = request  
+      //send the request to the bidpage that is listening on the msg
+      this.reqData.changeMessage(requestToSend)
+      this.router.navigateByUrl('/bid');
+      
     }
   
 

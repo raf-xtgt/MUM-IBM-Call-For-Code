@@ -39,7 +39,7 @@ energyRequestRoute.post("/AddSHEnergyRequest", async(req, res) => {
 
 // make a bid on an energy request
 energyRequestRoute.post("/Bid", async(req, res) => {
-    console.log("Request from frontend", req.body)
+    console.log("Bid Request from frontend", req.body)
     const energyReqId = req.body.EnRequestId
     try {
         // add the new user and their id
