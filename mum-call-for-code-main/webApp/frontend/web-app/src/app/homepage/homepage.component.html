@@ -2,35 +2,14 @@
 
     
         <div class="container-fluid">
-            <div class="row no-gutter">
-                
-                <!-- Welcome section -->
-                <div class="col-md-6">
-                    <div class="container">
-                        <div class="row">
-                            <div style="text-align: left; padding: 5pc;">
-                                <h1 style="font-size: 46px; font-weight:500; color:#2D323B">Solar Energy Trading </h1>
-                                <h3 style="font-size: 20px; color: #5B667C">Powered by Blockchain Technology</h3>
-                                <button mat-raised-button 
-                                style="background-color:#2793ff; color:beige; width:140px; 
-                                height:48px; border-radius: 12px; font-size: 16px;"
-                                (click)="redirectToMarket()">Start Trading</button>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Image section -->
-                <div class="col-md-6 d-none d-md-flex">
-                    <img class="images" src="../../assets/LandingPage.png" style="height: 100%; width: 100%; display: inline-flex; opacity: 0.9;">
-                </div>
-                
-            </div>
+            
 
             <!-- Problem statement -->
             <div class="row no-gutter" style=" background-color: #EBEDEC; padding:20px">
-                <div class="col-md-3"></div>
-                <div class="col-md-6" style="margin:auto; text-align: center; ">
+                <div class="col-md-2"></div>
+                <div class="col-md-8" style="margin:auto; text-align: center; ">
+                    <img class="images" src="../../assets/Logo.png" style="height: 260px; width: 300px;opacity: 0.9;margin-top:5px; margin-bottom: 30px; ">
+
                     <h2 style="color:rgb(55,52,50); font-size:40px; font-weight:500;">Why Energy Trading?</h2>
                     <h3>
                         <p>
@@ -45,8 +24,13 @@
                         </p>
 
                     </h3>
+                    <button mat-raised-button style="background-color:#2793ff; color:beige; width:140px;height:48px; border-radius: 12px; font-size: 16px;"
+                        (click)="redirectToMarket()">
+                        Start Trading
+                    </button>
+
                 </div>
-                <div class="col-md-3"></div>
+                <div class="col-md-2"></div>
             </div>
            
 
