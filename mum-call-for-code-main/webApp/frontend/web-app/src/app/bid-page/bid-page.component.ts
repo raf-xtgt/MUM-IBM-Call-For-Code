@@ -278,19 +278,6 @@ export class BidPageComponent implements OnInit {
         }
       })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 }
