@@ -5,8 +5,6 @@ import { BuyEnergyRequest } from '../classes';
 import {Router} from '@angular/router';
 import { SendDataService } from '../send-data.service';
 import { JWTService } from '../userAuth.service';
-import Swal from 'sweetalert2'
-import { TimerComponent } from '../timer/timer.component';
 
 
 // imports required for the pagination
@@ -35,7 +33,7 @@ export class NewMarketPageComponent implements OnInit {
   private _loggedInUserId : string = "" //id of the user that is logged in
 
   // for the pagination of closed buy requests
-  closedRequestDisplayedCols: string[] = [ 'energy', 'price', 'type', 'reqId']
+  closedRequestDisplayedCols: string[] = ['reqId', 'energy', 'price', 'type' ]
   closesRequestDataSource = new MatTableDataSource<energyRequests>(allClosedRequests)
     // add the paginator
     @ViewChild(MatPaginator) closedReqPaginator: MatPaginator | any
