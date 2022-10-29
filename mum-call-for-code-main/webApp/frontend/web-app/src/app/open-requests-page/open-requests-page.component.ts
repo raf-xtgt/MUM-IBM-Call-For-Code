@@ -149,7 +149,7 @@ export class OpenRequestsPageComponent implements OnInit {
   
 
     async getEnergyRequests(){
-   
+      allEnergyRequests = []
       this._configV2.getOpenEnergyRequests().subscribe(data => {
         //console.log("Buy requests data for market page", data)
         let response = JSON.parse(JSON.stringify(data))
@@ -173,9 +173,6 @@ export class OpenRequestsPageComponent implements OnInit {
             this.energyRequestDataSource = new MatTableDataSource<energyRequests>(allEnergyRequests)
             this.energyRequestDataSource.paginator = this.openedReqPaginator
   
-            
-          
-          
       }
         
   

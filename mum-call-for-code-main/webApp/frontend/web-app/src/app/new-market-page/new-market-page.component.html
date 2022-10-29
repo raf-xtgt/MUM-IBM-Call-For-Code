@@ -29,46 +29,37 @@
                     <div>
                         <mat-tab label="Closed Requests" style="width: 100%;">
                     
-                            <!-- No request notification -->
-                            <div *ngIf="noClosedBuyRequests" style="margin-left: 10px; width: 95%; height: 100%;">
-                                <h2>No buy requests available</h2>
-                            </div>
                             
                             <!-- When got closed requests -->
-                            <div *ngIf="!noClosedBuyRequests" style="margin-left: 10px; width: 95%; height: 100%;overflow: hidden;"> 
+                            <div style="margin-left: 10px; width: 95%; height: 100%;overflow: hidden;"> 
                             
                                 <table mat-table [dataSource]="closesRequestDataSource">
                                     
                                     <!-- buyer info -->
-                                    <ng-container matColumnDef="buyer">
-                                        <th mat-header-cell *matHeaderCellDef> Buyer </th>
-                                        <td mat-cell *matCellDef="let element"> {{element.buyer}} </td>
-                                    </ng-container>
-        
-                                    <!-- energyAmount info -->
-                                    <ng-container matColumnDef="energyAmount">
-                                        <th mat-header-cell *matHeaderCellDef> Energy Amount (kWh) </th>
-                                        <td mat-cell *matCellDef="let element"> {{element.energyAmount}} </td>
-                                    </ng-container>
-        
-        
-                                    <!-- fiatAmount info -->
-                                    <ng-container matColumnDef="fiatAmount">
-                                        <th mat-header-cell *matHeaderCellDef> Fiat Amount (RM) </th>
-                                        <td mat-cell *matCellDef="let element"> {{element.fiatAmount}} </td>
-                                    </ng-container>
-    
-                                    <!-- fiatAmount info -->
                                     <ng-container matColumnDef="reqId">
                                         <th mat-header-cell *matHeaderCellDef> Request Id </th>
                                         <td mat-cell *matCellDef="let element"> {{element.reqId}} </td>
                                     </ng-container>
         
+                                    <!-- energyAmount info -->
+                                    <ng-container matColumnDef="energy">
+                                        <th mat-header-cell *matHeaderCellDef> Energy Amount (kWh) </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.energy}} </td>
+                                    </ng-container>
+        
+        
+                                    <!-- fiatAmount info -->
+                                    <ng-container matColumnDef="price">
+                                        <th mat-header-cell *matHeaderCellDef> Fiat Amount (RM) </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                                    </ng-container>
+    
+        
         
                                     <!-- remaining time info -->
-                                    <ng-container matColumnDef="remTime">
-                                        <th mat-header-cell *matHeaderCellDef> Request Status  </th>
-                                        <td mat-cell *matCellDef="let element"> {{element.remTime}} </td>
+                                    <ng-container matColumnDef="type">
+                                        <th mat-header-cell *matHeaderCellDef> Type </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
                                     </ng-container>
                                 
                                     <tr mat-header-row *matHeaderRowDef="closedRequestDisplayedCols"></tr>

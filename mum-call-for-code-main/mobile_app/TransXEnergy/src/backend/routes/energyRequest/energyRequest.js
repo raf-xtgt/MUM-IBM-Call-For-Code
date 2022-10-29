@@ -96,4 +96,33 @@ energyRequestRoute.post("/GetEnergyRequest", async(req, res) => {
 
 });
 
+
+
+energyRequestRoute.post("/GetClosedEnergyRequest", async(req, res) => {
+    console.log("Request from frontend", req.body)
+    let energyRequests = []
+    try {
+        const citiesRef = db.collection('energyRequests');
+        const snapshot = await citiesRef.where('Processed', '==', true).get();
+        if (snapshot.empty) {
+            console.log('No new energy requests');
+            return;
+        }else{
+            snapshot.forEach(doc => {
+                energyRequests.push(doc.data())
+                // console.log(doc.id, '=>', doc.data());
+                // res.send({Success:true, Data:doc.data() })
+            });
+            res.send({Success:true, Data:energyRequests })
+
+        }
+
+    } catch (error) {
+        console.log(error)
+        // res.json({ success: false })
+        res.send({Success:false})
+    }
+
+});
+
 module.exports = energyRequestRoute;

@@ -17,6 +17,7 @@ export class ConfigServiceV2 {
 
   private _configUrl: string = "http://localhost:8989/";
   private _getEnergyRequests: string = this._configUrl + "EnergyRequest/GetEnergyRequest";
+  private _getClosedEnergyRequests: string = this._configUrl + "EnergyRequest/GetClosedEnergyRequest";
   
   // get sell requests for the user
 
@@ -32,6 +33,12 @@ export class ConfigServiceV2 {
   getOpenEnergyRequests()  {
     let data = "Data"
     return this.http.post(this._getEnergyRequests, data)
+  }
+
+  // get closed energy requests
+  getClosedEnergyRequests()  {
+    let data = "Data"
+    return this.http.post(this._getClosedEnergyRequests, data)
   }
 
 }

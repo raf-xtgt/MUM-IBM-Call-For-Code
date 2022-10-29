@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { ConfigService } from '../config.service';
+import { ConfigServiceV2 } from '../configV2';
 import { BuyEnergyRequest } from '../classes';
 import {Router} from '@angular/router';
 import { SendDataService } from '../send-data.service';
@@ -11,7 +12,7 @@ import { TimerComponent } from '../timer/timer.component';
 // imports required for the pagination
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { closedRequests, openRequests } from '../classes';
+import {  energyRequests } from '../classes';
 
 @Component({
   selector: 'app-new-market-page',
@@ -20,7 +21,7 @@ import { closedRequests, openRequests } from '../classes';
 })
 export class NewMarketPageComponent implements OnInit {
 
-  constructor(private _config:ConfigService, private router: Router, private reqData: SendDataService, private _jwtServ:JWTService) { }
+  constructor(private _configV2:ConfigServiceV2, private _config:ConfigService, private router: Router, private reqData: SendDataService, private _jwtServ:JWTService) { }
 
   
   public allOpenBuyRequests:Array<BuyEnergyRequest>=[];
@@ -34,8 +35,8 @@ export class NewMarketPageComponent implements OnInit {
   private _loggedInUserId : string = "" //id of the user that is logged in
 
   // for the pagination of closed buy requests
-  closedRequestDisplayedCols: string[] = ['buyer', 'energyAmount', 'fiatAmount', 'reqId','remTime']
-  closesRequestDataSource = new MatTableDataSource<closedRequests>(allClosedRequests)
+  closedRequestDisplayedCols: string[] = [ 'energy', 'price', 'type', 'reqId']
+  closesRequestDataSource = new MatTableDataSource<energyRequests>(allClosedRequests)
     // add the paginator
     @ViewChild(MatPaginator) closedReqPaginator: MatPaginator | any
 
@@ -63,44 +64,40 @@ export class NewMarketPageComponent implements OnInit {
 
   
   async getBuyRequests(){
-    this._config.getBuyRequests().subscribe(data => {
+    this._configV2.getClosedEnergyRequests().subscribe(data => {
       //console.log("Buy requests data for market page", data)
       let response = JSON.parse(JSON.stringify(data))
       console.log("Buy requests data for market page", response)
       //this.allBuyRequests = response.Requests
-      let reqArr = response.Requests
+      let reqArr = response.Data
       allClosedRequests = []
       for(let i = 0; i < reqArr.length; i++) {
+        let obj = reqArr[i]
         //console.log("All buy requests")
-        this._jwtServ.gerUsername(reqArr[i].BuyerId).subscribe(data => {
-          let response = JSON.parse(JSON.stringify(data))
-          
-          // for closed requests
-          if (reqArr[i].RequestClosed){
+      
 
-            let closedRequest:closedRequests={
-              buyer: "("+response.User.UserName+")\n"+reqArr[i].BuyerId,
-              energyAmount: reqArr[i].EnergyAmount,
-              fiatAmount: (reqArr[i].FiatAmount).toFixed(2),
-              reqId: reqArr[i].ReqId,
-              remTime: "Closed"
+          // for closed requests
+            let closedRequest:energyRequests={
+              type: obj.Prosumer_or_EV,
+                price: obj.UserPrice,
+                energy: obj.UserEnergy,
+                reqId: obj.requestId,
+                bidBtn: ''
             }
             allClosedRequests.push(closedRequest)
-            if (allClosedRequests.length>0){
-              this.noClosedBuyRequests = false
-            }
             
-          }
+            
+          
 
           if (i==reqArr.length-1){
 
             // instantiate pagination list for closed requests
-            this.closesRequestDataSource = new MatTableDataSource<closedRequests>(allClosedRequests)
+            this.closesRequestDataSource = new MatTableDataSource<energyRequests>(allClosedRequests)
             this.closesRequestDataSource.paginator = this.closedReqPaginator
           }
 
           
-        })
+        
         
     }
 
@@ -112,4 +109,4 @@ export class NewMarketPageComponent implements OnInit {
 }
 
 // for the closed requests
-let allClosedRequests: closedRequests[] = []
+let allClosedRequests: energyRequests[] = []
