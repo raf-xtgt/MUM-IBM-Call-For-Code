@@ -4,6 +4,7 @@ import {BuyEnergyRequest, GraphData, HouseholdEnergyData} from '../classes';
 import { DateService } from '../date.service';
 // import the custom http service module to communicate with backend
 import { ConfigService } from '../config.service';
+import { ConfigServiceV2 } from '../configV2';
 import { ModalService } from '../modals.service';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
@@ -23,7 +24,7 @@ import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 })
 export class OrderComponent implements OnInit {
 
-  constructor(private _jwtServ:JWTService, private _config:ConfigService, private router: Router) { }
+  constructor(private _jwtServ:JWTService, private _config:ConfigService, private _configV2:ConfigServiceV2, private router: Router) { }
 
   private dateService = new DateService()
   public modalService = new ModalService()
@@ -193,12 +194,20 @@ export class OrderComponent implements OnInit {
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-              this._buyRequest.buyerId = this._buyerId
-              this._buyRequest.energyAmount = this.energyInput
-              this._buyRequest.fiatAmount = this.energyInput * this.currentAvgPrice
-              //console.log("Buy request", this._buyRequest)
-              
-              if (this.orderValidation(this._buyRequest)){
+
+              let energyRequest = {
+                BidID: 'BD ',           
+                UserID: this._buyerId,        
+                UserPrice: (this.energyInput * this.currentAvgPrice),
+                UserEnergy: this.energyInput,    
+                Prosumer_or_EV : 'SH',
+                Buyer_or_Seller: 'Buy',  // buyer since making enery request
+                Processed: false
+            }
+
+            this._configV2.makeEnergyRequests(energyRequest).subscribe(data => {
+              let response = JSON.parse(JSON.stringify(data))
+              if (response.Success){
                 Swal.fire('Your request has been placed on the market!!', '', 'success')  
                   console.log(this._buyRequest)
                   this._config.makeBuyRequest(this._buyRequest).subscribe(data => {
@@ -213,6 +222,11 @@ export class OrderComponent implements OnInit {
                   text: 'Please enter valid energy amount and ensure you have sufficient fiat balance!',
                 })
               }
+            })
+
+    
+              
+              
               
               
 

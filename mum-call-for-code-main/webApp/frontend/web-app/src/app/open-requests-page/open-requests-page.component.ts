@@ -152,7 +152,7 @@ export class OpenRequestsPageComponent implements OnInit {
                         
               let enRequest:energyRequests={
                 type: obj.Prosumer_or_EV,
-                price: obj.UserPrice,
+                price: Math.round((obj.UserPrice + Number.EPSILON) * 100) / 100 ,
                 energy: obj.UserEnergy,
                 reqId: obj.requestId,
                 bidBtn: ''

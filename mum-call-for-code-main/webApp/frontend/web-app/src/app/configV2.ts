@@ -17,13 +17,16 @@ export class ConfigServiceV2 {
   private _getCMData: string = this._configUrl + "CustomerMatching/GetCMData";
   private _runCM: string = this._golangServer + "InitCM";
   private _writeBlockchain:string = this._configUrl + 'Blockchain/WriteBlockchain'
+  private _addEnergyRequest:string = this._configUrl + 'EnergyRequest/AddSHEnergyRequest'
   TOKEN_KEY = 'token';
 
 
   //inject the HttpClient service as a dependency 
   constructor(private http: HttpClient) { }
 
-
+  makeEnergyRequests(data:any)  {
+    return this.http.post(this._addEnergyRequest, data)
+  }
 
   // get open energy requests
   getOpenEnergyRequests()  {
@@ -64,3 +67,18 @@ export class ConfigServiceV2 {
   }
   
 }
+
+
+ // Swal.fire('Round of Customer Matching complete ', '', 'success')
+          // let blockchain = {
+          //   Data:[
+          //     {"Energy":10, "Money":34, "Price":234, "UserID":"SH fnfkjdsnfdkjsnvsd"},
+          //     {"Energy":5, "Money":343, "Price":654, "UserID":"SH fnfkjdsnfdkjsnvsd"},,
+          //     {"Energy":65, "Money":123, "Price":253, "UserID":"SH fnfkjdsnfdkjsnvsd"},],
+          //   Hash:"efejinvjinvkjsdvndvnkmbklmvclzxwqdhjnxcgfsdk",
+          //   Index:24,
+          //   LeaderID:"",
+          //   PrevHash:"db7afe0e0eafde4cd62e5a076c85dd983cad1a341e7194ba4560821dceabce10",
+          //   TNBEnergy:-321,
+          //   TNBMoney:8342.12
+          // }

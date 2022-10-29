@@ -27,6 +27,8 @@ blockchainRoute.post("/WriteBlockchain", async(req, res) => {
     // let resDb = await db.collection("blockchain").add(data)
     await db.collection("blockchain").doc("global").set(blockchain);
 
+    console.log("blockchain", blockchain.data.length)
+
     //res.json({Success:true})
     res.send({Success:true})
 });
