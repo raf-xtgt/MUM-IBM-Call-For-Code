@@ -31,6 +31,8 @@ export class EvPageComponent implements OnInit {
   public chargingTime :number = 0 // time the ev needs for charging
   public energyInput :number = 0; // amount of energy required/entered by user
   public priceToPay :number = 0; // amount the user needs to pay
+  public userType:any 
+
 
   public username :string =""
   private _buyerId :string = ""
@@ -71,7 +73,34 @@ export class EvPageComponent implements OnInit {
       borderColor: "#FF6347",
       backgroundColor: "#B22222",
       fill:false
-  },
+    },
+
+    {
+      borderColor: "#065535",
+      backgroundColor: "#d3ffce",
+      fill:false
+    },
+    {
+      borderColor: "#003366",
+      backgroundColor: "#c6e2ff",
+      fill:false
+    },
+    {
+      borderColor: "#800080",
+      backgroundColor: "#faebd7",
+      fill:false
+    },
+    {
+      borderColor: "#800000",
+      backgroundColor: "#cbbeb5",
+      fill:false
+    },
+
+    {
+      borderColor: "#00ff7f",
+      backgroundColor: "#a0db8e",
+      fill:false
+    },
   
   ];
 
@@ -90,8 +119,15 @@ export class EvPageComponent implements OnInit {
       this._jwtServ.verifyToken().subscribe(data => {
         console.log("Verified Token", data)
         let response = JSON.parse(JSON.stringify(data))
+        if (response.User.Type=="admin"){
+          this.username = response.User.UserName
+          this._buyerId = response.User.UId
+          this.getEnergyPriceData()
+          this.adminEVGraphs()
+        } 
+        
         //console.log(response.Username)
-        if (data !=null){
+        else{
           this.username = response.User.UserName
           this._buyerId = response.User.UId
           this.getEnergyPriceData()
@@ -127,8 +163,12 @@ export class EvPageComponent implements OnInit {
       upperEnd = 4
     }
 
-     //[{data:[50, 60, 60, 60, 60, 60, -50, -50, -50, -50, -50, 60, 60, 60, 60, 60,], label:'Charging Graph'},
-    let actual = [50, 60, 60, 60, 60, 60, -50, -50, -50, -50, -50, 60, 60, 60, 60, 60, -30, -30, -30, -30, -30, 50, 50, 50,50, 60, 60, 60, 60, 60, -50, -50, -50, -50, -50, 60, 60, 60, 60, 60, -30, -30, -30, -30, -30, 50, 50, 50]
+
+    let actual = [ 0,0,0,0,0,0,   0.3,	0.5,	0.7,	0.9,	1,	1,	1,	1,	1,	1,	1, 1,	1,	1,	0.8,	0.6,	0.6,	0.6,	0.8,	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+
+
+
+
 
     let forecast = [50, 64, 65, 62, 63, 63, -50, -52, -54, -53, -58, 60, 67, 66, 69, 66, -32, -33, -27, -33, -30, 50, 50, 50,50, 63, 60, 56, 66, 65, -54, -54, -58, -59, -50, 63, 60, 56, 66, 65, -30, -31, -34, -32, -33, 53, 52, 55]
     let xAxis: Label[] = ["12:00AM", "12:30AM", "01:00AM","01:30AM","02:00AM","02:30AM", "03:00AM", "03:30AM",
@@ -152,12 +192,12 @@ export class EvPageComponent implements OnInit {
 
     }
 
-    this.chartData = [{data:actualPlot, label:'Actual Charging Graph'}, {data:forecastPlot, label:'Forecast Charging Graph'}, ]
+    this.chartData = [{data:actualPlot, label:'Charging Graph for the day'} ]
     this.xAxis = xAxisPlot
-    this.prediction = forecastPlot[forecastPlot.length-1]
+    // this.prediction = forecastPlot[forecastPlot.length-1]
     this.currentConsumption = actualPlot[actualPlot.length-1]
     this.currentTime = (this.xAxis[this.xAxis.length-2]).toString()
-    this.predictionTime = (this.xAxis[this.xAxis.length-1]).toString()
+    // this.predictionTime = (this.xAxis[this.xAxis.length-1]).toString()
 
 
   }
@@ -245,12 +285,99 @@ export class EvPageComponent implements OnInit {
 
   }
 
-  /** When user clikcs on buy we need to update their account balance
-   * and store the energy request in the database.
-   */
 
-  getUserDetails(data: JSON){
+  adminEVGraphs(){
+        // ask the backend to add forecast data for this user on the database
+  
+    let date:Date = new Date()
+    let hrs:number = date.getHours()
+    let mins:number = date.getMinutes()
+    let upperEnd = 0
+    if (hrs != 0){
+      if (mins < 30){
+        upperEnd = hrs * 2
+      }
+      else if ((mins >=30) && (mins<=45)) {
+        upperEnd = (hrs*2) +1
+      }
+      else{
+        upperEnd = (hrs*2) +2
+      }
+    }
+    else{
+      upperEnd = 4
+    }
 
+
+    let ev1 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0.1,	0.3,	0.5,	0.7,	0.9,	0.7,	0.5,	0.4,	0.4,	0.6,	0.8,	1, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    
+    let ev2 = [ 0,0,0,0,0,0,0,0,0,0.5,	0.7,	0.9,	1,	1,	1,	1,	1,	1,	1,	1,	0.8,	0.6,	0.4,	0.2,	0.4,	0.6,	0.8,	1,	1,	1,	1, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    let ev3 = [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.6,	0.4,	0.6,	0.8,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	0.8,	0.6,	0.4,	0.6,	0.8,	1,0,0,0,0,0 ]
+    let ev4 = [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0.7,	0.9,	1,	1,	1,	1,	1,	0.8,	0.6,	0.4,	0.2,	0.4,	0.6,	0.8,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	0.8,	0.6,	0.6,	0.8,	1,0,0,0,0,0,0    ]
+
+    let ev5 = [ 0,0,0,0,0,0,   0.3,	0.5,	0.7,	0.9,	1,	1,	1,	1,	1,	1,	1, 1,	1,	1,	0.8,	0.6,	0.6,	0.6,	0.8,	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    let ev7 = [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.8,	0.6,	0.4,	0.6,	0.8,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	0.8,	0.6,	0.4,	0.6,	0.8,	1,	1,	1,	1,	1,0    ]
+    let ev6 = [ 0,0,0,0,0,0, 0.3,	0.5,	0.7,	0.9,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	0.8,	0.6,	0.6,	0.6, 0.8,	1, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0    ]
+
+
+
+
+    let xAxis: Label[] = ["12:00AM", "12:30AM", "01:00AM","01:30AM","02:00AM","02:30AM", "03:00AM", "03:30AM",
+    "04:00AM", "04:30AM", "05:00AM", "05:30AM", "06:00AM", "06:30AM","07:00AM", "07:30AM",
+    "08:00AM", "08:30AM", "09:00AM", "09:30AM", "10:00AM", "10:30AM", "11:00AM", "11:30AM", 
+    "12:00PM","12:30PM", "01:00PM","01:30PM","02:00PM","02:30PM", "03:00PM", "03:30PM",
+    "04:00PM", "04:30PM", "05:00PM", "05:30PM", "06:00PM", "06:30PM","07:00PM", "07:30PM",
+    "08:00PM", "08:30PM", "09:00PM", "09:30PM", "10:00PM", "10:30PM", "11:00PM", "11:30PM",]
+    
+
+    let ev1Plot = []
+    let ev2Plot = []
+    let ev3Plot = []
+    let ev4Plot = []
+    let ev5Plot = []
+    let ev6Plot = []
+    let ev7Plot = []
+    let xAxisPlot = []
+    for(let i=0; i<upperEnd; i++){
+      ev1Plot.push(ev1[i])
+
+    }
+    for(let j=0; j<upperEnd+1; j++){
+      ev2Plot.push(ev2[j])
+      
+    }
+    for(let j=0; j<upperEnd+1; j++){
+      ev3Plot.push(ev3[j])
+
+    }
+
+    for(let j=0; j<upperEnd+1; j++){
+      ev4Plot.push(ev4[j])
+
+    }
+    for(let j=0; j<upperEnd+1; j++){
+      ev5Plot.push(ev5[j])
+    }
+    for(let j=0; j<upperEnd+1; j++){
+      ev6Plot.push(ev6[j])
+      
+    }
+    for(let j=0; j<upperEnd+1; j++){
+      ev7Plot.push(ev7[j])
+      xAxisPlot.push(xAxis[j])
+    }
+
+    this.chartData = 
+    [
+      {data:ev1Plot, label:'Charging Graph for the day(EV1)'}, 
+      {data:ev2Plot, label:'Charging Graph for the day(EV2)'}, 
+      {data:ev3Plot, label:'Charging Graph for the day(EV3)'},
+      {data:ev4Plot, label:'Charging Graph for the day(EV4)'}, 
+      {data:ev5Plot, label:'Charging Graph for the day(EV5)'},
+      {data:ev6Plot, label:'Charging Graph for the day(EV6)'},
+      {data:ev7Plot, label:'Charging Graph for the day(EV7)'} 
+    ]
+    this.xAxis = xAxisPlot
   }
 
 }
