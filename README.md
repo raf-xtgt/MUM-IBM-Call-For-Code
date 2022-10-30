@@ -13,6 +13,21 @@ Hence in line with the Call for Codes Challenge, we propose a P2P energy trading
 Aside from the above scheme which would be facilitated in the backend, we aim to develop a web app for prosumers and EV charging stations to participate in the day-ahead P2P energy market. A separate app would also be developed for EV owners to allow their vehicle to easily pair with charging stations using NFC, as well as monitor their P2P transactions and EV battery charge status.
 
 
+## Pre-requisites
+
+### Clone the repp
+
+```
+git clone https://gitlab.com/ibm_cfc_mum/mum-ibm-call-for-code.git
+```
+
+### Install Node.js Package Manager
+```
+npm install
+```
+
+
+
 ### Repo Structure
 
 #### Web Application
@@ -50,16 +65,4 @@ cd mum-ibm-call-for-code/mum-call-for-code-nodered-grafana
 
 
 
-## Pre-requisites
-
-### Clone the repp
-
-```
-git clone https://gitlab.com/ibm_cfc_mum/mum-call-for-code.git
-```
-
-### Install Node.js Package Manager
-```
-npm install
-```
 
