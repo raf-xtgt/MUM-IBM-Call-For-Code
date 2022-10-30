@@ -11,6 +11,7 @@ Prerequisites:
 - Node-Red 2.2.2
 - Grafana 9.1.1
 
+Instructions:
 1. The Node-Red flow can be imported with the JSON file, “Node_red_flow_TransXEnergy”. 
 2. Some smart meter and weather data has been collected and exported to the “IBM-InfluxDB-Data.csv” file. This can be imported into an InfluxDB database once it has been installed.
 3. The Grafana dashboard can be imported using the “Grafana-Dashboard.json” file.
