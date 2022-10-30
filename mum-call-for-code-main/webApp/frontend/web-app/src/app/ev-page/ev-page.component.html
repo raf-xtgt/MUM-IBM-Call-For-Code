@@ -46,8 +46,27 @@
                             [colors]="chartColors"
                             >
                         </canvas>
+
+                        
                     </div>
                     
+                    
+                </div>
+                
+            </div>
+            <div class="row-no-gutter">
+                <div class="col-md-6">
+                    <mat-form-field appearance="fill">
+
+                    <mat-label>Select Time</mat-label>
+                    <mat-select [(ngModel)]="selectedValue" name="time">
+                        <mat-option *ngFor="let time of allTimes" [value]="time.value">
+                          {{time.value}}
+                        </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                    <button (click)="showForTime(selectedValue)">Show Charging Graph</button>
+
                 </div>
             </div>
         </div>

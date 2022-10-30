@@ -14,6 +14,7 @@ import { Label } from 'ng2-charts';
 import {ThemePalette} from '@angular/material/core';
 import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 
+
 @Component({
   selector: 'app-ev-page',
   templateUrl: './ev-page.component.html',
@@ -111,6 +112,10 @@ export class EvPageComponent implements OnInit {
   value = 100;
 
 
+  selectedValue: string|any;
+  
+
+  allTimes: EVTime[] = [];
 
   ngOnInit(): void {
     
@@ -329,6 +334,12 @@ export class EvPageComponent implements OnInit {
     "04:00PM", "04:30PM", "05:00PM", "05:30PM", "06:00PM", "06:30PM","07:00PM", "07:30PM",
     "08:00PM", "08:30PM", "09:00PM", "09:30PM", "10:00PM", "10:30PM", "11:00PM", "11:30PM",]
     
+    for (let i=0; i<xAxis.length; i++){
+      this.allTimes.push({value:xAxis[i]})
+    }
+    console.log(this.allTimes)
+
+
 
     let ev1Plot = []
     let ev2Plot = []
@@ -380,4 +391,99 @@ export class EvPageComponent implements OnInit {
     this.xAxis = xAxisPlot
   }
 
+  showForTime(selectedValue:string){
+    console.log("Selected time", selectedValue)
+            // ask the backend to add forecast data for this user on the database
+  
+            let upperEnd = 0
+            
+        
+        
+            let ev1 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0.1,	0.3,	0.5,	0.7,	0.9,	0.7,	0.5,	0.4,	0.4,	0.6,	0.8,	1, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            
+            let ev2 = [ 0,0,0,0,0,0,0,0,0,0.5,	0.7,	0.9,	1,	1,	1,	1,	1,	1,	1,	1,	0.8,	0.6,	0.4,	0.2,	0.4,	0.6,	0.8,	1,	1,	1,	1, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            let ev3 = [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.6,	0.4,	0.6,	0.8,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	0.8,	0.6,	0.4,	0.6,	0.8,	1,0,0,0,0,0 ]
+            let ev4 = [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0.7,	0.9,	1,	1,	1,	1,	1,	0.8,	0.6,	0.4,	0.2,	0.4,	0.6,	0.8,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	0.8,	0.6,	0.6,	0.8,	1,0,0,0,0,0,0    ]
+        
+            let ev5 = [ 0,0,0,0,0,0,   0.3,	0.5,	0.7,	0.9,	1,	1,	1,	1,	1,	1,	1, 1,	1,	1,	0.8,	0.6,	0.6,	0.6,	0.8,	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            let ev7 = [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.8,	0.6,	0.4,	0.6,	0.8,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	0.8,	0.6,	0.4,	0.6,	0.8,	1,	1,	1,	1,	1,0    ]
+            let ev6 = [ 0,0,0,0,0,0, 0.3,	0.5,	0.7,	0.9,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	0.8,	0.6,	0.6,	0.6, 0.8,	1, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0    ]
+        
+        
+        
+        
+            let xAxis: Label[] = ["12:00AM", "12:30AM", "01:00AM","01:30AM","02:00AM","02:30AM", "03:00AM", "03:30AM",
+            "04:00AM", "04:30AM", "05:00AM", "05:30AM", "06:00AM", "06:30AM","07:00AM", "07:30AM",
+            "08:00AM", "08:30AM", "09:00AM", "09:30AM", "10:00AM", "10:30AM", "11:00AM", "11:30AM", 
+            "12:00PM","12:30PM", "01:00PM","01:30PM","02:00PM","02:30PM", "03:00PM", "03:30PM",
+            "04:00PM", "04:30PM", "05:00PM", "05:30PM", "06:00PM", "06:30PM","07:00PM", "07:30PM",
+            "08:00PM", "08:30PM", "09:00PM", "09:30PM", "10:00PM", "10:30PM", "11:00PM", "11:30PM",]
+            
+            for (let i=0; i<xAxis.length; i++){
+              if (xAxis[i]==selectedValue){
+                upperEnd = i
+              }
+            }
+
+            for (let i=0; i<xAxis.length; i++){
+              this.allTimes.push({value:xAxis[i]})
+            }
+            console.log(this.allTimes)
+        
+        
+        
+            let ev1Plot = []
+            let ev2Plot = []
+            let ev3Plot = []
+            let ev4Plot = []
+            let ev5Plot = []
+            let ev6Plot = []
+            let ev7Plot = []
+            let xAxisPlot = []
+            for(let i=0; i<upperEnd; i++){
+              ev1Plot.push(ev1[i])
+        
+            }
+            for(let j=0; j<upperEnd+1; j++){
+              ev2Plot.push(ev2[j])
+              
+            }
+            for(let j=0; j<upperEnd+1; j++){
+              ev3Plot.push(ev3[j])
+        
+            }
+        
+            for(let j=0; j<upperEnd+1; j++){
+              ev4Plot.push(ev4[j])
+        
+            }
+            for(let j=0; j<upperEnd+1; j++){
+              ev5Plot.push(ev5[j])
+            }
+            for(let j=0; j<upperEnd+1; j++){
+              ev6Plot.push(ev6[j])
+              
+            }
+            for(let j=0; j<upperEnd+1; j++){
+              ev7Plot.push(ev7[j])
+              xAxisPlot.push(xAxis[j])
+            }
+        
+            this.chartData = 
+            [
+              {data:ev1Plot, label:'Charging Graph for the day(EV1)'}, 
+              {data:ev2Plot, label:'Charging Graph for the day(EV2)'}, 
+              {data:ev3Plot, label:'Charging Graph for the day(EV3)'},
+              {data:ev4Plot, label:'Charging Graph for the day(EV4)'}, 
+              {data:ev5Plot, label:'Charging Graph for the day(EV5)'},
+              {data:ev6Plot, label:'Charging Graph for the day(EV6)'},
+              {data:ev7Plot, label:'Charging Graph for the day(EV7)'} 
+            ]
+            this.xAxis = xAxisPlot
+  }
+}
+
+
+interface EVTime {
+  value: string|any;
 }
