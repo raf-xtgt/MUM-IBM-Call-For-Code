@@ -48,7 +48,7 @@ export class NewMarketPageComponent implements OnInit {
   async ngOnInit(): Promise<void> {
 
     // timer(0, 10000) call the function immediately and every 10 seconds 
-    this.timerSubscription = timer(0, 1800*1000).pipe( 
+    this.timerSubscription = timer(1800*1000).pipe( 
       map(async () => { 
         console.log("This is run every 10s now")
         await this._configV2.getCMData().subscribe(async data => {
